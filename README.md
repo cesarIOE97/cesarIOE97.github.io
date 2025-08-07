@@ -1,47 +1,30 @@
-# Personal CV Website
+# César Olvera Academic Website
 
-This repository contains a minimal, responsive CV/portfolio website template built with HTML, TailwindCSS, and vanilla JavaScript. Content is stored in `data.json` so you can update your information without touching the HTML.
+Static personal website built with HTML and [TailwindCSS](https://tailwindcss.com). The site acts as an online CV and research portfolio and is ready to be hosted on GitHub Pages.
+
+## Pages
+- **Home** – landing page with name, title and introduction.
+- **About** – background and research interests.
+- **CV** – education, experience, awards and certifications with PDF download.
+- **Projects** – selected research projects and publications.
+- **Contact** – email and social links.
 
 ## Features
+- Responsive design with optional dark mode.
+- Subtle hover animations, smooth scrolling and section fade‑ins.
+- Modular structure for easy customization (`assets/css`, `assets/js`, `assets/pdf`).
 
-- Clean landing page with name, title, and summary
-- Sections for About, CV/Experience, Projects/Publications, Skills, and Contact
-- Responsive layout with TailwindCSS
-- Optional light/dark mode with preference saved to `localStorage`
-- Easy content updates via `data.json`
+## Setup
+1. Edit the HTML files to add your own content.
+2. Replace `assets/pdf/Cesar_Olvera_CV.pdf` with your CV.
+3. Push changes to the `main` branch to publish via GitHub Pages.
 
-## Customization
-
-1. **Update personal data**
-   - Edit `data.json` and replace the example text with your own information.
-2. **Change styling**
-   - TailwindCSS is loaded via CDN in `index.html`. You can adjust classes directly in the HTML if desired.
-3. **Add more sections**
-   - Extend `data.json` and adjust `script.js` if you need additional content areas.
-
-## Local Preview
-
-To view the site locally, serve the files with a simple HTTP server (required for `fetch`):
+## Development
+No build step is required. Open `index.html` in your browser or serve the folder:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then open [http://localhost:8000](http://localhost:8000) in your browser.
-
-## Deployment
-
-For a user or organization page named `<username>.github.io`, pushing to the default branch will automatically publish the site via GitHub Pages.
-
-1. Commit your changes.
-2. Push to GitHub:
-
-```bash
-git push origin main
-```
-
-The site will be available at `https://<username>.github.io/` after the push.
-
 ## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See `LICENSE` for details.
