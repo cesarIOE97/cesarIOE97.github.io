@@ -1,0 +1,42 @@
+{
+  "personalInfo": {
+    "name": "Your Name",
+    "title": "Your Title",
+    "bio": "Short bio",
+    "longBio": "Longer bio if you have it",
+    "affiliations": ["Aalto University", "DICE", "Cloud & Network Computing"]
+  },
+  "researchInterests": ["Cloud Computing", "Sustainable AI"],
+  "cv": {
+    "education": [ { "degree": "...", "institution": "...", "date": "...", "description": "...", "advisor": "..." } ],
+    "experience": [ { "position": "...", "institution": "...", "date": "...", "description": "...", "supervisor": "..." } ],
+    "awards":     [ { "title": "...", "institution": "...", "date": "...", "description": "..." } ],
+    "teaching":   [ { "course": "...", "institution": "...", "period": "...", "role": "..." } ],
+    "research":   [ { "project": "...", "agency": "...", "period": "...", "amount": "...", "pi": "...", "description": "..." } ]
+  },
+  "projects": [
+    { "title": "...", "description": "...", "tags": ["..."], "funding": "...", "period": "...", "role": "...", "status": "Completed" }
+  ],
+  "contact": [
+    { "type": "email", "label": "Email", "value": "name@uni.fi", "link": "mailto:name@uni.fi", "icon": "📧" }
+  ],
+  "languages": [
+    { "language": "Spanish", "level": "Native" },
+    { "language": "English", "level": "Fluent" }
+  ],
+  "news": [
+    { "title": "Award...", "date": "March 2025", "description": "..." }
+  ],
+  "speaking": [
+    { "title": "...", "event": "...", "date": "...", "location": "...", "type": "Keynote", "audience": "500+", "slides": "https://..." }
+  ],
+  "service": [
+    { "role": "Reviewer", "venue": "TOS", "period": "2024–Present" }
+  ],
+  "activities": [
+    { "title": "Volunteer - Slush", "organization": "Slush", "location": "Helsinki", "date": "2023", "description": "..." }
+  ],
+  "media": [
+    { "title": "Feature name", "outlet": "Aalto News", "date": "June 2022", "location": "Finland", "link": "https://..." }
+  ]
+}
