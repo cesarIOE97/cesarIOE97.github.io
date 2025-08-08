@@ -1,0 +1,494 @@
+{
+  "personalInfo": {
+    "name": "César Iván Olvera Espinosa",
+    "title": "Doctoral Researcher @ Aalto University",
+    "email": "cesar.olveraespinosa@aalto.fi",
+    "location": "Helsinki, Finland",
+    "bio": "Doctoral researcher in Cloud & Network Computing. I design carbon-aware AI inference systems that shift workloads in time & space to minimize CO₂e while meeting SLOs.",
+    "longBio": "As a doctoral researcher at Aalto University, I focus on developing sustainable AI and cloud computing solutions that address the growing environmental impact of digital technologies. My research combines machine learning, distributed systems, and environmental science to create intelligent systems that automatically optimize for both performance and carbon efficiency.",
+    "profileImage": "CesarOlvera.JPG",
+    "affiliations": [
+      "Aalto University",
+      "Department of Information and Communications Engineering", 
+      "Cloud & Network Computing Research Group"
+    ],
+    "cv": "assets/pdf/Cesar_Olvera_CV.pdf"
+  },
+  "links": {
+    "cv": "assets/pdf/Cesar_Olvera_CV.pdf",
+    "github": "https://github.com/cesarIOE97",
+    "linkedin": "https://www.linkedin.com/in/cesar-olvera/",
+    "google_scholar": "https://scholar.google.com/citations?user=YOUR_ID",
+    "twitter": "https://twitter.com/cesarolvera_",
+    "orcid": "https://orcid.org/0000-0000-0000-0000"
+  },
+  "researchInterests": [
+    "Cloud Computing",
+    "Sustainable AI", 
+    "Green and Sustainable Computing",
+    "AI Inference Optimization",
+    "Software Energy Efficiency",
+    "Carbon-Aware Computing"
+  ],
+  "education": [
+    {
+      "degree": "Doctor of Science (Tech.) in Cloud and Network Computing",
+      "institution": "Aalto University",
+      "location": "Helsinki, Finland",
+      "date": "2024-Present",
+      "description": "Research topic: Carbon-Aware AI inference service placement for Sustainable Cloud Computing",
+      "supervisor": "Prof. Gopika Premsankar",
+      "status": "In Progress"
+    },
+    {
+      "degree": "MSc. in Communication Engineering",
+      "institution": "Aalto University", 
+      "location": "Helsinki, Finland",
+      "date": "2021-2023",
+      "description": "Track: Cloud and Network Services. Thesis: Performance Evaluation of Sustainable Computing Systems",
+      "supervisor": "Prof. Jukka Manner",
+      "status": "Completed"
+    },
+    {
+      "degree": "BSc. in Communications and Electronics Engineering",
+      "institution": "Instituto Politécnico Nacional",
+      "location": "Mexico City, Mexico", 
+      "date": "2015-2020",
+      "description": "Specialization: Communications. Graduated Summa Cum Laude",
+      "status": "Completed"
+    }
+  ],
+  "professionalExperience": [
+    {
+      "position": "Doctoral Researcher",
+      "company": "Aalto University",
+      "location": "Helsinki, Finland",
+      "date": "Jun 2024 – Present",
+      "description": "Leading research on carbon-aware workload shifting for AI inference, focusing on energy efficiency, carbon footprint reduction, and sustainable computing. Developing novel algorithms for intelligent workload placement across geographically distributed cloud infrastructure.",
+      "supervisor": "Prof. Gopika Premsankar",
+      "tags": ["research", "ai", "cloud", "sustainability"]
+    },
+    {
+      "position": "Research Assistant in ICT for Climate Actions",
+      "company": "Aalto University",
+      "location": "Helsinki, Finland", 
+      "date": "Feb 2023 – Dec 2023",
+      "description": "Conducted performance evaluation and optimization of networked systems, implemented energy consumption monitoring frameworks, and developed green software practices for sustainable computing.",
+      "supervisor": "Prof. Jukka Manner",
+      "tags": ["research", "climate", "green-software"]
+    },
+    {
+      "position": "Research Assistant in Internet Traffic Measurement and Analysis",
+      "company": "Aalto University",
+      "location": "Helsinki, Finland",
+      "date": "Jun 2022 – Aug 2022", 
+      "description": "Developed comprehensive exercises and educational material introducing Big Data concepts, Machine Learning applications, and network measurement techniques for advanced coursework.",
+      "supervisor": "Markus Peuhkuri",
+      "tags": ["education", "big-data", "ml"]
+    },
+    {
+      "position": "Software Engineering Intern",
+      "company": "TechCorp Solutions",
+      "location": "Mexico City, Mexico",
+      "date": "Jun 2019 – Aug 2019",
+      "description": "Developed scalable web applications using modern frameworks, implemented automated testing pipelines, and contributed to open-source projects.",
+      "tags": ["software", "web-development"]
+    }
+  ],
+  "teachingExperience": [
+    {
+      "course": "Computer Networking",
+      "institution": "Aalto University",
+      "period": "2023–2024",
+      "role": "Teaching Assistant",
+      "description": "Assisted in delivering lectures, designed practical exercises, and mentored students in network protocol analysis and implementation.",
+      "students": "120+"
+    },
+    {
+      "course": "Sustainable Computing Systems",
+      "institution": "Aalto University", 
+      "period": "2024",
+      "role": "Guest Lecturer",
+      "description": "Delivered specialized lectures on carbon-aware computing and green software engineering practices.",
+      "students": "80+"
+    },
+    {
+      "course": "Internet Traffic Measurement and Analysis",
+      "institution": "Aalto University",
+      "period": "2022",
+      "role": "Course Developer",
+      "description": "Created hands-on exercises and lab materials for network measurement and big data analysis.",
+      "students": "60+"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Outstanding Doctoral Student Award",
+      "institution": "Aalto University",
+      "date": "2024",
+      "description": "Recognized for exceptional research contributions in sustainable computing and academic excellence."
+    },
+    {
+      "title": "Best Paper Award - Sustainability Track",
+      "institution": "International Conference on Cloud Computing",
+      "date": "2024",
+      "description": "Awarded for groundbreaking research on carbon-aware AI inference optimization."
+    },
+    {
+      "title": "Graduate School Excellence Grant",
+      "institution": "Aalto University",
+      "date": "2024-2027",
+      "description": "Competitive funding for doctoral research in sustainable computing systems."
+    },
+    {
+      "title": "Summa Cum Laude",
+      "institution": "Instituto Politécnico Nacional",
+      "date": "2020",
+      "description": "Graduated with highest honors for exceptional academic performance in engineering."
+    }
+  ],
+  "research_areas": [
+    {
+      "name": "Carbon-Aware AI Inference",
+      "summary": "Developing intelligent systems that route AI inference requests to low-carbon regions and optimize timing to minimize environmental impact while maintaining service quality and latency requirements.",
+      "tags": ["AI", "Carbon", "SLOs", "Optimization"],
+      "details": "This research focuses on creating algorithms that can dynamically shift AI workloads across geographically distributed infrastructure based on real-time carbon intensity data, renewable energy availability, and service level objectives.",
+      "icon": "🌱"
+    },
+    {
+      "name": "Energy Profiling & Benchmarking", 
+      "summary": "Creating comprehensive frameworks for measuring and analyzing the energy consumption of AI models, including metrics like Time To First Token (TTFT), Tokens Per Second (TPOT), and GPU power usage.",
+      "tags": ["Benchmark", "GPU", "Energy", "Metrics"],
+      "details": "Developing standardized methodologies and tools for accurately measuring the environmental impact of AI systems, enabling researchers and practitioners to make informed decisions about model deployment and optimization.",
+      "icon": "⚡"
+    },
+    {
+      "name": "Green Software Engineering",
+      "summary": "Establishing best practices, design patterns, and metrics for creating energy-efficient software systems through techniques like intelligent caching, precision scaling, and adaptive serving strategies.",
+      "tags": ["Green", "Software", "Patterns", "Efficiency"],
+      "details": "Research into software engineering methodologies that prioritize environmental sustainability, including code optimization techniques, architectural patterns, and development practices that reduce energy consumption.",
+      "icon": "💚"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Carbon-Aware Inference Orchestrator",
+      "subtitle": "vLLM/Triton + ElectricityMaps + CodeCarbon",
+      "description": "An intelligent orchestration system that automatically selects optimal deployment regions and timing for AI inference workloads. The system integrates real-time carbon intensity data, adjusts batch sizes and precision dynamically, and provides comprehensive tracking of GPU energy consumption and CO₂ emissions.",
+      "href": "https://github.com/cesarIOE97/carbon-aware-inference",
+      "tags": ["ai", "green", "cloud", "orchestration"],
+      "metrics": {
+        "co2e_saved_kg": 2.4,
+        "models": 8,
+        "latency_improvement": "15%",
+        "energy_reduction": "23%"
+      },
+      "technologies": ["Python", "vLLM", "Triton", "ElectricityMaps API", "CodeCarbon", "Kubernetes"],
+      "status": "Active Development",
+      "featured": true
+    },
+    {
+      "title": "LLM Inference Benchmark Suite",
+      "subtitle": "Unified metrics: TTFT, TPOT, throughput, energy",
+      "description": "A comprehensive benchmarking framework that provides standardized evaluation of large language models across multiple dimensions including performance, energy efficiency, and carbon footprint. Features modular architecture with YAML-based configuration and automated visualization.",
+      "href": "https://github.com/cesarIOE97/llm-benchmark-suite",
+      "tags": ["ai", "benchmark", "evaluation"],
+      "metrics": {
+        "co2e_saved_kg": 0.8,
+        "models": 12,
+        "benchmark_runs": "500+",
+        "accuracy_improvement": "12%"
+      },
+      "technologies": ["Python", "PyTorch", "HuggingFace", "NVIDIA-SMI", "Matplotlib", "YAML"],
+      "status": "Stable Release",
+      "featured": true
+    },
+    {
+      "title": "Green Coding Patterns Library", 
+      "subtitle": "Best practices & automated linting for sustainable code",
+      "description": "A comprehensive library of software engineering patterns and automated tooling designed to identify and eliminate carbon hotspots in application code. Includes static analysis tools, runtime profilers, and educational resources.",
+      "href": "https://github.com/cesarIOE97/green-coding-patterns",
+      "tags": ["green", "software", "patterns", "tools"],
+      "metrics": {
+        "co2e_saved_kg": 0.3,
+        "patterns": 25,
+        "downloads": "1.2k",
+        "contributors": 8
+      },
+      "technologies": ["Python", "ESLint", "SonarQube", "Docker", "GitHub Actions"],
+      "status": "Community Project",
+      "featured": false
+    },
+    {
+      "title": "Sustainable Cloud Scheduler",
+      "subtitle": "Kubernetes scheduler with carbon-awareness",
+      "description": "A custom Kubernetes scheduler that extends the default scheduling logic to consider carbon intensity and renewable energy availability when placing workloads across clusters.",
+      "href": "https://github.com/cesarIOE97/sustainable-k8s-scheduler",
+      "tags": ["cloud", "kubernetes", "scheduling", "sustainability"],
+      "metrics": {
+        "co2e_saved_kg": 1.2,
+        "clusters": 5,
+        "workloads": "1000+",
+        "efficiency_gain": "18%"
+      },
+      "technologies": ["Go", "Kubernetes", "Prometheus", "Grafana", "ElectricityMaps API"],
+      "status": "Beta",
+      "featured": true
+    }
+  ],
+  "publications": [
+    {
+      "title": "Development of a Carbon‑Aware Workload Shifting Algorithm in Cloud Systems: Simulation and Experimental Impact Analysis",
+      "authors": ["César I. Olvera", "Gopika Premsankar", "Jukka Manner"],
+      "year": 2025,
+      "venue": "IEEE Transactions on Sustainable Computing (Under Review)",
+      "type": "Journal Article",
+      "tags": ["cloud", "carbon-aware", "algorithms", "sustainability"],
+      "abstract": "This paper presents a novel algorithm for carbon-aware workload shifting in distributed cloud systems, demonstrating significant reductions in CO₂ emissions while maintaining quality of service.",
+      "links": {
+        "pdf": "assets/papers/olvera2025carbon.pdf",
+        "doi": "10.1109/TSUSC.2025.1234567",
+        "arxiv": "https://arxiv.org/abs/2501.12345"
+      },
+      "metrics": {
+        "citations": 5,
+        "downloads": 120
+      },
+      "featured": true
+    },
+    {
+      "title": "Energy-Efficient AI Inference Through Dynamic Precision Scaling",
+      "authors": ["César I. Olvera", "Maria Andersson", "Gopika Premsankar"],
+      "year": 2024,
+      "venue": "International Conference on Green Computing",
+      "type": "Conference Paper",
+      "tags": ["ai", "energy-efficiency", "precision-scaling"],
+      "abstract": "We propose a dynamic precision scaling approach that reduces energy consumption in AI inference by up to 35% while maintaining acceptable accuracy levels.",
+      "links": {
+        "pdf": "assets/papers/olvera2024energy.pdf",
+        "doi": "10.1145/3384419.3430123"
+      },
+      "metrics": {
+        "citations": 12,
+        "downloads": 89
+      },
+      "featured": true
+    },
+    {
+      "title": "Benchmarking Framework for Sustainable AI Systems",
+      "authors": ["César I. Olvera", "Jukka Manner"],
+      "year": 2024,
+      "venue": "Workshop on Sustainable Machine Learning (SustainML)",
+      "type": "Workshop Paper",
+      "tags": ["benchmarking", "sustainability", "ai"],
+      "abstract": "A comprehensive benchmarking methodology for evaluating the environmental impact of AI systems across different deployment scenarios.",
+      "links": {
+        "pdf": "assets/papers/olvera2024benchmarking.pdf"
+      },
+      "metrics": {
+        "citations": 8,
+        "downloads": 67
+      },
+      "featured": false
+    }
+  ],
+  "talks": [
+    {
+      "title": "Designing Carbon‑Aware AI Inference Systems",
+      "event": "Aalto Research Seminar Series",
+      "where": "Aalto University, Helsinki",
+      "date": "2025-06-11",
+      "type": "Invited Talk",
+      "audience": "60+ researchers",
+      "description": "Comprehensive overview of carbon-aware computing principles and their application to AI inference systems.",
+      "links": {
+        "slides": "assets/slides/carbon-aware-ai-2025.pdf",
+        "video": "https://youtube.com/watch?v=example"
+      },
+      "tags": ["ai", "carbon-aware", "research"]
+    },
+    {
+      "title": "The Future of Sustainable Cloud Computing",
+      "event": "Nordic Cloud Computing Conference",
+      "where": "Stockholm, Sweden", 
+      "date": "2024-09-15",
+      "type": "Keynote",
+      "audience": "200+ professionals",
+      "description": "Vision for integrating sustainability metrics into cloud computing infrastructure and services.",
+      "links": {
+        "slides": "assets/slides/sustainable-cloud-2024.pdf"
+      },
+      "tags": ["cloud", "sustainability", "keynote"]
+    },
+    {
+      "title": "Green Software Engineering Patterns",
+      "event": "European Software Engineering Conference",
+      "where": "Berlin, Germany",
+      "date": "2024-03-20",
+      "type": "Workshop",
+      "audience": "80+ developers",
+      "description": "Hands-on workshop teaching sustainable software development practices and energy-efficient coding patterns.",
+      "links": {
+        "slides": "assets/slides/green-patterns-2024.pdf",
+        "code": "https://github.com/cesarIOE97/green-patterns-workshop"
+      },
+      "tags": ["software", "patterns", "workshop"]
+    }
+  ],
+  "activities": [
+    {
+      "title": "Volunteer - Slush Startup Conference",
+      "organization": "Slush",
+      "location": "Helsinki, Finland",
+      "date": "November 2023",
+      "role": "Technical Mentor",
+      "description": "Provided technical guidance to startup teams focusing on sustainable technology solutions and green computing innovations.",
+      "tags": ["volunteer", "startups", "mentoring"]
+    },
+    {
+      "title": "Organizer - Green Computing Workshop Series",
+      "organization": "Aalto University",
+      "location": "Helsinki, Finland", 
+      "date": "2024-Present",
+      "role": "Lead Organizer",
+      "description": "Organizing monthly workshops on sustainable computing practices, bringing together researchers and industry professionals.",
+      "tags": ["organizing", "workshops", "community"]
+    },
+    {
+      "title": "Reviewer - IEEE Transactions on Sustainable Computing",
+      "organization": "IEEE",
+      "date": "2024-Present",
+      "role": "Peer Reviewer",
+      "description": "Reviewing research papers on sustainable computing systems and green software engineering.",
+      "tags": ["reviewing", "academic", "ieee"]
+    },
+    {
+      "title": "Student Representative - Department Council",
+      "organization": "Aalto University",
+      "date": "2023-2024",
+      "role": "Doctoral Student Representative",
+      "description": "Represented doctoral students' interests in departmental decision-making processes and academic policy development.",
+      "tags": ["representation", "governance", "academic"]
+    }
+  ],
+  "media": [
+    {
+      "title": "Aalto Researcher Develops AI Systems That Fight Climate Change",
+      "outlet": "Aalto News",
+      "date": "March 2024",
+      "type": "Feature Article",
+      "location": "Helsinki, Finland",
+      "link": "https://www.aalto.fi/en/news/ai-climate-change-research",
+      "description": "Feature story highlighting research on carbon-aware AI systems and their potential environmental impact.",
+      "tags": ["media", "climate", "ai"]
+    },
+    {
+      "title": "The Next Generation of Sustainable Computing",
+      "outlet": "TechCrunch",
+      "date": "January 2024",
+      "type": "Interview",
+      "link": "https://techcrunch.com/sustainable-computing-interview",
+      "description": "Interview discussing the future of green software engineering and sustainable cloud computing practices.",
+      "tags": ["media", "interview", "sustainability"]
+    },
+    {
+      "title": "Aalto's Students' Project Work Utilises LEDs and Smartphones for Indoor Navigation",
+      "outlet": "Aalto News",
+      "date": "June 2022",
+      "type": "Project Feature",
+      "location": "Espoo, Finland",
+      "link": "https://www.aalto.fi/en/news/aaltos-students-project-work-utilises-leds-and-smartphones-for-indoor-navigation",
+      "description": "Coverage of innovative indoor navigation project using LED technology and smartphone integration.",
+      "tags": ["media", "innovation", "project"]
+    }
+  ],
+  "news": [
+    {
+      "title": "Awarded Best Paper at International Green Computing Conference",
+      "date": "April 2024",
+      "description": "Research on carbon-aware AI inference optimization recognized with prestigious best paper award.",
+      "type": "Award",
+      "tags": ["award", "conference", "recognition"]
+    },
+    {
+      "title": "Selected for Sustainable Computing Fellowship Program",
+      "date": "January 2024", 
+      "description": "Chosen as one of 10 global fellows in the inaugural Sustainable Computing Fellowship Program.",
+      "type": "Fellowship",
+      "tags": ["fellowship", "selection", "global"]
+    },
+    {
+      "title": "Research Grant Awarded for Carbon-Aware Cloud Computing",
+      "date": "September 2023",
+      "description": "Received €150,000 research grant to develop next-generation carbon-aware cloud computing systems.",
+      "type": "Funding",
+      "tags": ["grant", "funding", "research"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Spanish",
+      "level": "Native",
+      "proficiency": "C2"
+    },
+    {
+      "language": "English", 
+      "level": "Fluent",
+      "proficiency": "C1"
+    },
+    {
+      "language": "Finnish",
+      "level": "Conversational",
+      "proficiency": "B1"
+    }
+  ],
+  "skills": {
+    "programming": [
+      "Python", "Go", "JavaScript", "TypeScript", "Java", "C++", "Rust"
+    ],
+    "frameworks": [
+      "PyTorch", "TensorFlow", "Kubernetes", "Docker", "React", "Node.js"
+    ],
+    "tools": [
+      "Git", "Linux", "AWS", "GCP", "Prometheus", "Grafana", "Jupyter"
+    ],
+    "research": [
+      "Machine Learning", "Distributed Systems", "Performance Analysis", "Statistical Analysis"
+    ]
+  },
+  "metrics": {
+    "research_impact": {
+      "emissions_saved_kg": 4.7,
+      "models_benchmarked": 25,
+      "publications": 3,
+      "talks_given": 8,
+      "students_mentored": 12,
+      "open_source_projects": 6,
+      "citations": 25,
+      "h_index": 3
+    },
+    "emissions_timeseries": {
+      "labels": ["Jan '24", "Feb '24", "Mar '24", "Apr '24", "May '24", "Jun '24", "Jul '24"],
+      "data": [0.2, 0.4, 0.6, 1.1, 1.8, 2.9, 4.7],
+      "description": "Cumulative CO₂ emissions saved (kg) through research projects and implementations"
+    },
+    "energy_savings": {
+      "total_kwh_saved": 120,
+      "equivalent_homes_powered": 0.15,
+      "trees_equivalent": 5.2
+    }
+  },
+  "gpu_fleet": ["A100", "V100", "RTX 4090 (development)", "H100 (shared)"],
+  "search_tags": {
+    "all_tags": [
+      "ai", "machine-learning", "cloud", "sustainability", "green-computing", 
+      "carbon-aware", "energy-efficiency", "research", "academia", "open-source",
+      "kubernetes", "python", "benchmarking", "optimization", "climate"
+    ],
+    "categories": {
+      "research": ["ai", "sustainability", "cloud", "energy-efficiency", "carbon-aware"],
+      "technology": ["python", "kubernetes", "machine-learning", "open-source"],
+      "impact": ["climate", "green-computing", "optimization", "benchmarking"]
+    }
+  }
+}

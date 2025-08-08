@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>César Olvera — Sustainable Cloud & AI</title>
+  <meta name="description" content="Portfolio of César Olvera — Doctoral researcher in Cloud Computing, Sustainable AI, Green Software, AI Inference Optimization, and Carbon-Aware Computing." />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Simple on-page error banner for visibility
+    function showError(msg){
+      try{
+        let bar = document.getElementById('errorBar');
+        if(!bar){
+          bar = document.createElement('div');
+          bar.id='errorBar';
+          bar.style.cssText='position:fixed;left:0;right:0;top:0;z-index:9999;background:#fee2e2;color:#7f1d1d;padding:8px 12px;font:12px/1.4 system-ui; border-bottom:1px solid #fecaca';
+          document.body.prepend(bar);
+        }
+        bar.textContent = '⚠️ ' + msg;
+      }catch(e){
+        console.warn('showError failed', e);
+      }
+    }
+
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
+          colors: {
+            brand: {
+              50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9', 400: '#22d3ee',
+              500: '#06b6d4', 600: '#0891b2', 700: '#0e7490', 800: '#155e75', 900: '#164e63'
+            }
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(2,132,199,0.12)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { color-scheme: light dark; }
+    /* Accent gradient background */
+    .bg-grid {
+      background-image: radial-gradient(rgba(14,116,144,.15) 1px, transparent 1px);
+      background-size: 16px 16px;
+      mask-image: radial-gradient(circle at center, black, transparent 75%);
+    }
+    .animate-gradient {
+      background-size: 400% 400%;
+      animation: gradientMove 16s ease infinite;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .chart-wrap { position: relative; height: 160px; max-height: 200px; width: 100%; overflow: hidden; }
+    .chart-canvas { width: 100% !important; height: 100% !important; max-height: 200px !important; }
+  </style>
+</head>
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100">
+  <!-- Top accent -->
+  <div class="fixed inset-x-0 top-0 h-[400px] -z-10 bg-gradient-to-b from-sky-200/40 via-transparent to-transparent dark:from-sky-900/30"></div>
+  <div class="fixed inset-0 -z-20 bg-grid"></div>
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-slate-900/50 border-b border-slate-200/50 dark:border-slate-800">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <a href="#home" class="font-extrabold tracking-tight text-xl">César <span class="text-sky-600">Olvera</span></a>
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="#about" class="hover:text-sky-600">About</a>
+        <a href="#research" class="hover:text-sky-600">Research</a>
+        <a href="#projects" class="hover:text-sky-600">Projects</a>
+        <a href="#publications" class="hover:text-sky-600">Publications</a>
+        <a href="#talks" class="hover:text-sky-600">Talks</a>
+        <a href="#metrics" class="hover:text-sky-600">Metrics</a>
+        <a href="#contact" class="hover:text-sky-600">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <button id="themeToggle" class="p-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:shadow-soft" aria-label="Toggle theme">
+          <svg id="iconSun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 20 20" fill="currentColor"><path d="M10 15a5 5 0 100-10 5 5 0 000 10z"/><path fill-rule="evenodd" d="M10 1a1 1 0 011 1v1a1 1 0 11-2 0V2a1 1 0 011-1zm0 15a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM3.22 3.22a1 1 0 011.42 0l.7.7a1 1 0 11-1.42 1.42l-.7-.7a1 1 0 010-1.42zm11.44 11.44a1 1 0 011.42 0l.7.7a1 1 0 01-1.42 1.42l-.7-.7a1 1 0 010-1.42zM1 10a1 1 0 011-1h1a1 1 0 110 2H2a1 1 0 01-1-1zm15-1a1 1 0 100 2h1a1 1 0 100-2h-1zM3.22 16.78a1 1 0 010-1.42l.7-.7a1 1 0 111.42 1.42l-.7.7a1 1 0 01-1.42 0zm11.44-11.44a1 1 0 010 1.42l-.7.7a1 1 0 11-1.42-1.42l.7-.7a1 1 0 011.42 0z" clip-rule="evenodd"/></svg>
+          <svg id="iconMoon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M21.752 15.002A9.718 9.718 0 0112 21.75a9.75 9.75 0 01-1.22-19.42 0.75 0.75 0 01.86 1.02A8.25 8.25 0 0020.25 16a0.75 0.75 0 001.502-.998z"/></svg>
+        </button>
+        <a id="cvLink" href="#" target="_blank" class="hidden sm:inline-flex items-center gap-2 rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-1.5 text-sm hover:shadow-soft">CV</a>
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-xl border border-slate-200 dark:border-slate-800" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 space-y-2">
+      <a href="#about" class="block">About</a>
+      <a href="#research" class="block">Research</a>
+      <a href="#projects" class="block">Projects</a>
+      <a href="#publications" class="block">Publications</a>
+      <a href="#talks" class="block">Talks</a>
+      <a href="#metrics" class="block">Metrics</a>
+      <a href="#contact" class="block">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute -top-40 -left-40 h-80 w-80 bg-gradient-to-br from-sky-400/30 via-emerald-300/30 to-fuchsia-300/30 blur-3xl rounded-full animate-gradient"></div>
+    <div class="mx-auto max-w-7xl px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+          Sustainable <span class="text-sky-600">Cloud</span> &
+          <span class="text-emerald-600">AI</span>
+        </h1>
+        <p class="mt-5 text-lg text-slate-600 dark:text-slate-300 max-w-xl">
+          Doctoral researcher focused on <strong>Cloud Computing</strong>, <strong>Sustainable AI</strong>,
+          <strong>Green & Sustainable Computing</strong>, <strong>AI Inference Optimization</strong>,
+          <strong>Software Energy Efficiency</strong>, and <strong>Carbon‑Aware Computing</strong>.
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#projects" class="rounded-xl bg-sky-600 text-white px-4 py-2 font-semibold shadow-soft">See Projects</a>
+          <a href="#research" class="rounded-xl border border-slate-200 dark:border-slate-800 px-4 py-2">Research Areas</a>
+        </div>
+        <div class="mt-6 flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
+          <span id="locationBadge" class="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1">📍 Helsinki, FI</span>
+          <button id="copyEmail" class="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1">📧 Copy email</button>
+          <a id="ghLink" href="#" target="_blank" class="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1"> GitHub</a>
+          <a id="liLink" href="#" target="_blank" class="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1">in LinkedIn</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-2 bg-white/60 dark:bg-slate-900/50 backdrop-blur">
+          <div class="rounded-xl bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 p-6">
+            <div class="grid grid-cols-2 gap-4 text-center">
+              <div class="rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                <div class="text-3xl font-extrabold" id="metricEmissions">—</div>
+                <div class="text-xs text-slate-500">CO₂e Saved</div>
+              </div>
+              <div class="rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                <div class="text-3xl font-extrabold" id="metricModels">—</div>
+                <div class="text-xs text-slate-500">Models Benchmarked</div>
+              </div>
+              <div class="rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                <div class="text-3xl font-extrabold" id="metricPubs">—</div>
+                <div class="text-xs text-slate-500">Publications</div>
+              </div>
+              <div class="rounded-xl p-4 border border-slate-200 dark:border-slate-800">
+                <div class="text-3xl font-extrabold" id="metricTalks">—</div>
+                <div class="text-xs text-slate-500">Talks</div>
+              </div>
+            </div>
+            <div class="chart-wrap mt-6 w-full">
+              <canvas id="emissionsChart" class="chart-canvas block"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="mx-auto max-w-7xl px-4 py-16">
+    <div class="grid md:grid-cols-3 gap-10 items-start">
+      <div class="md:col-span-2">
+        <h2 class="text-2xl md:text-3xl font-bold">About</h2>
+        <p id="aboutText" class="mt-4 text-slate-600 dark:text-slate-300"></p>
+        <div class="mt-6 flex flex-wrap gap-2" id="interestChips"></div>
+      </div>
+      <div class="md:col-span-1">
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+          <h3 class="font-semibold">Quick Links</h3>
+          <ul id="quickLinks" class="mt-3 text-sm space-y-2"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Areas -->
+  <section id="research" class="mx-auto max-w-7xl px-4 py-16">
+    <div class="flex items-center justify-between">
+      <h2 class="text-2xl md:text-3xl font-bold">Research Areas</h2>
+      <input id="searchBox" type="search" placeholder="Search projects…" class="hidden md:block rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-2 text-sm w-64"/>
+    </div>
+    <div id="areaCards" class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="mx-auto max-w-7xl px-4 py-16">
+    <div class="flex items-center justify-between">
+      <h2 class="text-2xl md:text-3xl font-bold">Featured Projects</h2>
+      <div class="flex gap-2 text-sm">
+        <button data-filter="all" class="filterBtn rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-1.5">All</button>
+        <button data-filter="ai" class="filterBtn rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-1.5">AI</button>
+        <button data-filter="cloud" class="filterBtn rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-1.5">Cloud</button>
+        <button data-filter="green" class="filterBtn rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-1.5">Green</button>
+      </div>
+    </div>
+    <div id="projectCards" class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications" class="mx-auto max-w-7xl px-4 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold">Publications & Preprints</h2>
+    <ol id="pubList" class="mt-6 space-y-4 list-decimal list-inside"></ol>
+  </section>
+
+  <!-- Talks -->
+  <section id="talks" class="mx-auto max-w-7xl px-4 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold">Talks & Teaching</h2>
+    <div id="talkList" class="mt-6 grid md:grid-cols-2 gap-6"></div>
+  </section>
+
+  <!-- Metrics -->
+  <section id="metrics" class="mx-auto max-w-7xl px-4 py-16">
+    <h2 class="text-2xl md:text-3xl font-bold">Open Metrics</h2>
+    <div class="mt-6 grid md:grid-cols-3 gap-6">
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+        <h3 class="font-semibold">Energy & Carbon</h3>
+        <p class="text-sm text-slate-500">Live from your experiments database (CSV/JSON).</p>
+        <pre class="text-xs mt-3 bg-slate-50 dark:bg-slate-900 p-3 rounded-lg overflow-auto"><code id="metricSource"></code></pre>
+      </div>
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+        <h3 class="font-semibold">GPU Fleet</h3>
+        <ul id="gpuList" class="mt-3 text-sm space-y-1"></ul>
+      </div>
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+        <h3 class="font-semibold">Badges</h3>
+        <div id="badges" class="mt-3 flex flex-wrap gap-2 text-xs"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="mx-auto max-w-7xl px-4 py-16">
+    <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+      <h2 class="text-2xl md:text-3xl font-bold">Contact</h2>
+      <form id="contactForm" class="mt-6 grid md:grid-cols-3 gap-4">
+        <input required name="name" placeholder="Name" class="rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-2"/>
+        <input required type="email" name="email" placeholder="Email" class="rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-2"/>
+        <input name="subject" placeholder="Subject" class="rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-2"/>
+        <textarea required name="message" placeholder="Message" class="md:col-span-3 rounded-xl border border-slate-200 dark:border-slate-800 px-3 py-2"></textarea>
+        <button class="md:col-span-3 rounded-xl bg-sky-600 text-white px-4 py-2 font-semibold">Send</button>
+      </form>
+      <p class="text-xs text-slate-500 mt-2">This static form opens your email client with a prefilled draft (GitHub Pages‑friendly). Replace with Formspree or your backend if needed.</p>
+    </div>
+  </section>
+
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-10 text-center text-sm text-slate-500">
+    © <span id="year"></span> César Olvera. Built with Tailwind. Carbon‑aware by design.
+  </footer>
+
+  <!-- Chart.js (for the small hero chart) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+  <!-- Embedded default data (override by placing data/portfolio.json) -->
+  <script id="embeddedData" type="application/json">
+  {
+    "name": "César Iván Olvera Espinosa",
+    "title": "Doctoral Researcher @ Aalto University",
+    "email": "cesar.olvera@aalto.fi",
+    "location": "Helsinki, Finland",
+    "bio": "Doctoral researcher in Cloud & Network Computing. I design carbon-aware AI inference systems that shift workloads in time & space to minimize CO₂e while meeting SLOs.",
+    "interests": [
+      "Cloud Computing",
+      "Sustainable AI",
+      "Green and Sustainable Computing",
+      "AI Inference Optimization",
+      "Software Energy Efficiency",
+      "Carbon-Aware Computing"
+    ],
+    "links": {
+      "cv": "assets/CesarOlvera_CV.pdf",
+      "github": "https://github.com/cesarIOE97",
+      "linkedin": "https://www.linkedin.com/in/cesar-olvera/",
+      "google_scholar": "",
+      "twitter": ""
+    },
+    "research_areas": [
+      {
+        "name": "Carbon-Aware AI Inference",
+        "summary": "Routing requests to low-carbon regions, time-shifting non-urgent jobs, and dynamic batching while preserving latency SLOs.",
+        "tags": ["AI", "Carbon", "SLOs"]
+      },
+      {
+        "name": "Energy Profiling & Benchmarking",
+        "summary": "Measuring TTFT, TPOT, throughput, GPU power, and emissions with CodeCarbon & NVIDIA-SMI.",
+        "tags": ["Benchmark", "GPU", "Energy"]
+      },
+      {
+        "name": "Green Software Engineering",
+        "summary": "Patterns & metrics for energy-efficient software: caching, precision scaling, adaptive serving.",
+        "tags": ["Green", "SW"]
+      }
+    ],
+    "projects": [
+      {
+        "title": "Carbon-Aware Inference Orchestrator",
+        "subtitle": "vLLM/Triton + ElectricityMaps + CodeCarbon",
+        "description": "Prototype that selects region/time, adjusts batch size and precision, tracks GPU energy, and logs CO₂e.",
+        "href": "https://github.com/cesarIOE97",
+        "tags": ["ai", "green", "cloud"],
+        "metrics": {"co2e_saved_kg": 2.4, "models": 8}
+      },
+      {
+        "title": "LLM Inference Benchmark Suite",
+        "subtitle": "Unified metrics: TTFT, TPOT, throughput, energy",
+        "description": "Modular runner with YAML configs, GPU tracking, and plots.",
+        "href": "https://github.com/cesarIOE97",
+        "tags": ["ai", "benchmark"],
+        "metrics": {"co2e_saved_kg": 0.8, "models": 12}
+      },
+      {
+        "title": "Green Coding Patterns",
+        "subtitle": "Best practices & linting rules",
+        "description": "A guide and tooling to identify carbon hotspots in code paths.",
+        "href": "https://github.com/cesarIOE97",
+        "tags": ["green", "sw"],
+        "metrics": {"co2e_saved_kg": 0.3, "models": 3}
+      }
+    ],
+    "publications": [
+      {
+        "title": "Development of a Carbon‑Aware Workload Shifting Algorithm in Cloud Systems: Simulation and Experimental Impact Analysis",
+        "authors": ["César I. Olvera", "..."],
+        "year": 2025,
+        "venue": "Preprint",
+        "links": {"pdf": "", "doi": ""}
+      }
+    ],
+    "talks": [
+      {
+        "title": "Designing Carbon‑Aware AI Inference",
+        "event": "Research Seminar",
+        "where": "Aalto University",
+        "date": "2025-06-11",
+        "link": ""
+      }
+    ],
+    "metrics": {
+      "emissions_saved_kg": 3.5,
+      "models_benchmarked": 15,
+      "publications": 1,
+      "talks": 3,
+      "emissions_timeseries": [0.1,0.2,0.15,0.25,0.4,0.5,0.6]
+    },
+    "gpu_fleet": ["A100", "V100", "RTX 4090 (dev)"]
+  }
+  </script>
+
+  <script>
+    // Wrap everything in an IIFE to avoid polluting global scope and prevent duplicate identifier errors
+    (() => {
+      // --- Utilities (renamed $$ -> $all to avoid conflicts) ---
+      const $ = (sel, el=document) => el.querySelector(sel);
+      const $all = (sel, el=document) => Array.from(el.querySelectorAll(sel));
+
+      // Singleton chart instance to prevent duplicates / growth
+      let emissionsChart = null;
+
+      // Theme
+      const themeToggle = $('#themeToggle');
+      const iconSun = $('#iconSun');
+      const iconMoon = $('#iconMoon');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const savedTheme = localStorage.getItem('theme');
+      const setTheme = (dark) => {
+        document.documentElement.classList.toggle('dark', dark);
+        iconMoon.classList.toggle('hidden', dark);
+        iconSun.classList.toggle('hidden', !dark);
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      };
+      setTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+      themeToggle.addEventListener('click', () => setTheme(!document.documentElement.classList.contains('dark')));
+
+      // Mobile menu
+      $('#mobileMenuBtn').addEventListener('click', () => {
+        $('#mobileMenu').classList.toggle('hidden');
+      });
+
+      // Load data: try external /data/portfolio.json then fallback to embedded
+      async function loadData() {
+        try {
+          const res = await fetch('data/portfolio.json', { cache: 'no-store' });
+          if (!res.ok) throw new Error('no external data');
+          return await res.json();
+        } catch (e) {
+          return JSON.parse($('#embeddedData').textContent);
+        }
+      }
+
+      function chip(label) {
+        return `<span class="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1 text-xs">${label}</span>`;
+      }
+
+      function projectCard(p) {
+        const tagClass = (t) => ({ ai:'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300', cloud:'bg-sky-500/10 text-sky-700 dark:text-sky-300', green:'bg-lime-500/10 text-lime-700 dark:text-lime-300', benchmark:'bg-fuchsia-500/10 text-fuchsia-700 dark:text-fuchsia-300', sw:'bg-amber-500/10 text-amber-700 dark:text-amber-300' }[t]||'border');
+        return `
+        <a href="${p.href}" target="_blank" data-tags="${p.tags.join(' ')}" class="project rounded-2xl border border-slate-200 dark:border-slate-800 p-5 hover:shadow-soft transition-shadow">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold">${p.title}</h3>
+            <span class="text-xs text-slate-500">${p.subtitle||''}</span>
+          </div>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">${p.description}</p>
+          <div class="mt-4 flex flex-wrap gap-2">${p.tags.map(t=>`<span class="${tagClass(t)} rounded-full px-2 py-0.5 text-[10px] uppercase tracking-wide">${t}</span>`).join('')}</div>
+          <div class="mt-4 text-xs text-slate-500">CO₂e saved: <strong>${p.metrics?.co2e_saved_kg ?? 0} kg</strong> · Models: <strong>${p.metrics?.models ?? 0}</strong></div>
+        </a>`
+      }
+
+      function talkCard(t) {
+        return `
+        <a href="${t.link||'#'}" class="rounded-2xl border border-slate-200 dark:border-slate-800 p-5 hover:shadow-soft block">
+          <div class="font-semibold">${t.title}</div>
+          <div class="text-sm text-slate-500">${t.event} — ${t.where}</div>
+          <div class="text-xs text-slate-400 mt-1">${new Date(t.date).toLocaleDateString()}</div>
+        </a>`
+      }
+
+      function publicationItem(p) {
+        const links = [p.links?.pdf?`<a class='underline' target='_blank' href='${p.links.pdf}'>PDF</a>`:'', p.links?.doi?`<a class='underline' target='_blank' href='${p.links.doi}'>DOI</a>`:''].filter(Boolean).join(' · ');
+        return `<li><span class="font-medium">${p.title}</span>. ${p.authors?.join(', ')||''}. <em>${p.venue||''}</em>, ${p.year||''}. ${links}</li>`
+      }
+
+      function renderAreas(areas) {
+        $('#areaCards').innerHTML = areas.map(a => `
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+            <div class="font-semibold">${a.name}</div>
+            <p class="text-sm text-slate-600 dark:text-slate-300 mt-2">${a.summary}</p>
+            <div class="mt-3 flex flex-wrap gap-2">${a.tags.map(chip).join('')}</div>
+          </div>
+        `).join('');
+      }
+
+      function renderBadges() {
+        const badges = [
+          `⭐ Open‑source`,
+          `🌱 Carbon‑aware`,
+          `⚡ Energy metrics`,
+          `☁️ Cloud‑native`
+        ];
+        $('#badges').innerHTML = badges.map(b=>`<span class="inline-flex items-center gap-2 rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1">${b}</span>`).join('');
+      }
+
+      function initFilters() {
+        $all('.filterBtn').forEach(btn => btn.addEventListener('click', () => {
+          const f = btn.dataset.filter;
+          $all('.project').forEach(card => {
+            const tags = card.dataset.tags.split(' ');
+            card.classList.toggle('hidden', f!=='all' && !tags.includes(f));
+          });
+        }));
+      }
+
+      function initSearch() {
+        const input = $('#searchBox');
+        if (!input) return;
+        input.addEventListener('input', () => {
+          const q = input.value.toLowerCase();
+          $all('#projectCards .project').forEach(card => {
+            card.style.opacity = card.textContent.toLowerCase().includes(q) ? 1 : 0.25;
+          });
+        });
+      }
+
+      function initCopyEmail(email) {
+        $('#copyEmail').addEventListener('click', async () => {
+          await navigator.clipboard.writeText(email);
+          $('#copyEmail').textContent = '✅ Copied';
+          setTimeout(()=>$('#copyEmail').textContent='📧 Copy email', 1500);
+        });
+      }
+
+      function initContactForm(email) {
+        $('#contactForm').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const form = e.target;
+          const params = new URLSearchParams({
+            subject: `[Portfolio] ${form.subject.value||'New message'}`,
+            body: `From: ${form.name.value} <${form.email.value}>\n\n${form.message.value}`
+          });
+          window.location.href = `mailto:${email}?${params.toString()}`;
+        });
+      }
+
+      function renderChart(series = []) {
+        const canvas = document.getElementById('emissionsChart');
+        if (!canvas || typeof Chart === 'undefined') return;
+
+        // Enforce fixed-size drawing surface to avoid infinite growth
+        const wrap = canvas.parentElement;
+        const targetHeight = Math.min( (wrap?.clientHeight || 160), 200 );
+        const targetWidth = wrap?.clientWidth || 600;
+        canvas.height = targetHeight;   // pixels
+        canvas.width  = targetWidth;    // pixels
+
+        const labels = series.map((_, i) => `Run ${i + 1}`);
+
+        if (emissionsChart) {
+          // Update existing instance instead of creating new ones
+          emissionsChart.data.labels = labels;
+          emissionsChart.data.datasets[0].data = series;
+          emissionsChart.update('none'); // no animation
+          return;
+        }
+
+        emissionsChart = new Chart(canvas, {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [{ label: 'CO₂e saved (kg)', data: series, tension: 0.35 }]
+          },
+          options: {
+            responsive: false,           // fixed size prevents resize cascade
+            maintainAspectRatio: false,  // use explicit height above
+            animation: false,
+            plugins: { legend: { display: true } },
+            scales: { x: { display: false } }
+          }
+        });
+      }
+
+      function scrollAnimations() {
+        const io = new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{
+            if (e.isIntersecting) e.target.classList.add('opacity-100','translate-y-0');
+          });
+        }, { threshold: .1 });
+        $all('section').forEach(sec=>{
+          sec.classList.add('opacity-0','translate-y-6','transition','duration-700');
+          io.observe(sec);
+        });
+      }
+
+      (async function main(){
+        const data = await loadData();
+        // Basic bindings
+        $('#year').textContent = new Date().getFullYear();
+        $('#aboutText').textContent = data.bio || '';
+        $('#interestChips').innerHTML = (data.interests||[]).map(chip).join('');
+        $('#locationBadge').textContent = `📍 ${data.location||'—'}`;
+        $('#cvLink').href = data.links?.cv || '#';
+        $('#ghLink').href = data.links?.github || '#';
+        $('#liLink').href = data.links?.linkedin || '#';
+        $('#quickLinks').innerHTML = [
+          data.links?.google_scholar && `<a class='underline' target='_blank' href='${data.links.google_scholar}'>Google Scholar</a>`,
+          data.links?.twitter && `<a class='underline' target='_blank' href='${data.links.twitter}'>Twitter</a>`
+        ].filter(Boolean).map(x=>`<li>${x}</li>`).join('');
+
+        // Metrics
+        $('#metricEmissions').textContent = (data.metrics?.emissions_saved_kg ?? 0).toFixed(1);
+        $('#metricModels').textContent = data.metrics?.models_benchmarked ?? 0;
+        $('#metricPubs').textContent = data.metrics?.publications ?? 0;
+        $('#metricTalks').textContent = data.metrics?.talks ?? 0;
+        $('#metricSource').textContent = JSON.stringify(data.metrics, null, 2);
+        renderChart(data.metrics?.emissions_timeseries || []);
+
+        // Areas, Projects, Publications, Talks, GPUs
+        renderAreas(data.research_areas || []);
+        $('#projectCards').innerHTML = (data.projects||[]).map(projectCard).join('');
+        $('#pubList').innerHTML = (data.publications||[]).map(publicationItem).join('');
+        $('#talkList').innerHTML = (data.talks||[]).map(talkCard).join('');
+        $('#gpuList').innerHTML = (data.gpu_fleet||[]).map(g=>`<li>${g}</li>`).join('');
+        renderBadges();
+
+        initFilters();
+        initSearch();
+        initCopyEmail(data.email || '');
+        initContactForm(data.email || '');
+        scrollAnimations();
+
+        // --- Smoke tests (basic runtime checks) ---
+        setTimeout(() => {
+          try {
+            console.assert(typeof $ === 'function', '[test] $ exists');
+            console.assert(typeof $all === 'function', '[test] $all exists');
+            console.assert($all('section').length >= 5, '[test] sections rendered');
+            console.assert(document.getElementById('home') !== null, '[test] #home exists');
+            console.assert(document.getElementById('contactForm') !== null, '[test] contact form exists');
+
+            // Chart should reuse a single instance and a single dataset
+            const canvas = document.getElementById('emissionsChart');
+            renderChart([0.2, 0.3, 0.1]);
+            const chA = (typeof Chart !== 'undefined') ? Chart.getChart(canvas) : null;
+            renderChart([0.4, 0.1]);
+            const chB = (typeof Chart !== 'undefined') ? Chart.getChart(canvas) : null;
+            if (chA && chB) {
+              console.assert(chA === chB, '[test] chart instance reused');
+              console.assert(chB.data.datasets.length === 1, '[test] single dataset only');
+              console.assert(Array.isArray(chB.data.datasets[0].data), '[test] dataset is array (Chart.js)');
+            }
+
+            // Extra tests: calling renderChart with empty series should not error
+            renderChart([]);
+            const chC = (typeof Chart !== 'undefined') ? Chart.getChart(canvas) : null;
+            if (chC) {
+              console.assert(chC.data.datasets[0].data.length === 0, '[test] empty series handled');
+              console.assert(chC === chB, '[test] still a single instance after empty update');
+            }
+
+            // Height should remain stable between renders (no infinite growth)
+            const can = document.getElementById('emissionsChart');
+            const h1 = can.clientHeight;
+            renderChart([0.5, 0.6, 0.4, 0.7]);
+            const h2 = can.clientHeight;
+            console.assert(h1 === h2, `[test] canvas height stable (${h1} === ${h2})`);
+
+            console.log('[portfolio:test] smoke tests passed');
+          } catch (e) {
+            console.warn('[portfolio:test] smoke tests failed', e);
+          }
+        }, 100);
+      })();
+    })();
+  </script>
+</body>
+</html>

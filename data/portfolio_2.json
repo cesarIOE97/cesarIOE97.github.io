@@ -1,0 +1,91 @@
+{
+    "name": "César Iván Olvera Espinosa",
+    "title": "Doctoral Researcher @ Aalto University",
+    "email": "cesar.olvera@aalto.fi",
+    "location": "Helsinki, Finland",
+    "bio": "Doctoral researcher in Cloud & Network Computing. I design carbon-aware AI inference systems that shift workloads in time & space to minimize CO₂e while meeting SLOs.",
+    "interests": [
+      "Cloud Computing",
+      "Sustainable AI",
+      "Green and Sustainable Computing",
+      "AI Inference Optimization",
+      "Software Energy Efficiency",
+      "Carbon-Aware Computing"
+    ],
+    "links": {
+      "cv": "assets/CesarOlvera_CV.pdf",
+      "github": "https://github.com/cesarIOE97",
+      "linkedin": "https://www.linkedin.com/in/cesar-olvera/",
+      "google_scholar": "",
+      "twitter": ""
+    },
+    "research_areas": [
+      {
+        "name": "Carbon-Aware AI Inference",
+        "summary": "Routing requests to low-carbon regions, time-shifting non-urgent jobs, and dynamic batching while preserving latency SLOs.",
+        "tags": ["AI", "Carbon", "SLOs"]
+      },
+      {
+        "name": "Energy Profiling & Benchmarking",
+        "summary": "Measuring TTFT, TPOT, throughput, GPU power, and emissions with CodeCarbon & NVIDIA-SMI.",
+        "tags": ["Benchmark", "GPU", "Energy"]
+      },
+      {
+        "name": "Green Software Engineering",
+        "summary": "Patterns & metrics for energy-efficient software: caching, precision scaling, adaptive serving.",
+        "tags": ["Green", "SW"]
+      }
+    ],
+    "projects": [
+      {
+        "title": "Carbon-Aware Inference Orchestrator",
+        "subtitle": "vLLM/Triton + ElectricityMaps + CodeCarbon",
+        "description": "Prototype that selects region/time, adjusts batch size and precision, tracks GPU energy, and logs CO₂e.",
+        "href": "https://github.com/cesarIOE97",
+        "tags": ["ai", "green", "cloud"],
+        "metrics": {"co2e_saved_kg": 2.4, "models": 8}
+      },
+      {
+        "title": "LLM Inference Benchmark Suite",
+        "subtitle": "Unified metrics: TTFT, TPOT, throughput, energy",
+        "description": "Modular runner with YAML configs, GPU tracking, and plots.",
+        "href": "https://github.com/cesarIOE97",
+        "tags": ["ai", "benchmark"],
+        "metrics": {"co2e_saved_kg": 0.8, "models": 12}
+      },
+      {
+        "title": "Green Coding Patterns",
+        "subtitle": "Best practices & linting rules",
+        "description": "A guide and tooling to identify carbon hotspots in code paths.",
+        "href": "https://github.com/cesarIOE97",
+        "tags": ["green", "sw"],
+        "metrics": {"co2e_saved_kg": 0.3, "models": 3}
+      }
+    ],
+    "publications": [
+      {
+        "title": "Development of a Carbon‑Aware Workload Shifting Algorithm in Cloud Systems: Simulation and Experimental Impact Analysis",
+        "authors": ["César I. Olvera", "..."],
+        "year": 2025,
+        "venue": "Preprint",
+        "links": {"pdf": "", "doi": ""}
+      }
+    ],
+    "talks": [
+      {
+        "title": "Designing Carbon‑Aware AI Inference",
+        "event": "Research Seminar",
+        "where": "Aalto University",
+        "date": "2025-06-11",
+        "link": ""
+      }
+    ],
+    "metrics": {
+      "emissions_saved_kg": 3.5,
+      "models_benchmarked": 15,
+      "publications": 1,
+      "talks": 3,
+      "emissions_timeseries": [0.1,0.2,0.15,0.25,0.4,0.5,0.6]
+    },
+    "gpu_fleet": ["A100", "V100", "RTX 4090 (dev)"]
+  }
