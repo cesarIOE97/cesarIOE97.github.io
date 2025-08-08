@@ -4,7 +4,7 @@
     "title": "Doctoral researcher @ Aalto University",
     "bio": "Doctoral researcher in Cloud and Network Computing at Aalto University, Finland. Researching carbon-aware AI workload placement and sustainable cloud and network systems.",
     "longBio": "Longer bio if you have it",
-    "affiliations": ["Aalto University", "DICE", "Cloud & Network Computing"]
+    "affiliations": ["Aalto University", "Department of Information and Communications Engineering", "Cloud & Network Computing"]
   },
   "researchInterests": ["Cloud Computing", "Sustainable AI", "Software Development", "Green and Sustainable Computing"],
   "cv": {
