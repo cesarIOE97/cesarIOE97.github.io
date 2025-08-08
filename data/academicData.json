@@ -1,45 +1,183 @@
 {
-  "personalInfo": {
-    "name": "César Iván Olvera Espinosa",
-    "title": "Doctoral researcher @ Aalto University",
-    "bio": "Doctoral researcher in Cloud and Network Computing at Aalto University, Finland. Researching carbon-aware AI workload placement and sustainable cloud and network systems.",
-    "longBio": "Longer bio if you have it",
-    "affiliations": ["Aalto University", "Department of Information and Communications Engineering", "Cloud & Network Computing"]
-  },
-  "researchInterests": ["Cloud Computing", "Sustainable AI", "Software Development", "Green and Sustainable Computing"],
-  "cv": {
-    "education": [ 
-        { "degree": "MSc. in Communication Engineering", "institution": "Aalto University", "date": "2021-2023", "description": "Track: Cloud and Network Services", "supervisor": "Jukka Manner" } ,
-        { "degree": "BSc. in Communications and Electronics Engineering", "institution": "Instituto Politécnico Nacional", "date": "2015-2023", "description": "Track: Communications" } ],
-    "experience": [ { "position": "...", "institution": "...", "date": "...", "description": "...", "supervisor": "..." } ],
-    "awards":     [ { "title": "...", "institution": "...", "date": "...", "description": "..." } ],
-    "teaching":   [ { "course": "...", "institution": "...", "period": "...", "role": "..." } ],
-    "research":   [ { "project": "...", "agency": "...", "period": "...", "amount": "...", "pi": "...", "description": "..." } ]
-  },
-  "projects": [
-    { "title": "...", "description": "...", "tags": ["..."], "funding": "...", "period": "...", "role": "...", "status": "Completed" }
-  ],
-  "contact": [
-    { "type": "email", "label": "Email", "value": "cesar.olveraespinosa@aalto.fi", "link": "mailto:cesar.olveraespinosa@aalto.fi", "icon": "📧" },
-    { "type": "linkedin", "label": "LinkedIn", "value": "linkedin.com/in/cesar-olvera/", "link": "https://www.linkedin.com/in/cesar-olvera/", "icon": "👨🏻‍💻"}
-  ],
-  "languages": [
-    { "language": "Spanish", "level": "Native" },
-    { "language": "English", "level": "Fluent" }
-  ],
-  "news": [
-    { "title": "Award...", "date": "March 2025", "description": "..." }
-  ],
-  "speaking": [
-    { "title": "...", "event": "...", "date": "...", "location": "...", "type": "Keynote", "audience": "500+", "slides": "https://..." }
-  ],
-  "service": [
-    { "role": "Reviewer", "venue": "TOS", "period": "2024–Present" }
-  ],
-  "activities": [
-    { "title": "Volunteer - Slush", "organization": "Slush", "location": "Helsinki", "date": "2023", "description": "..." }
-  ],
-  "media": [
-    { "title": "Feature name", "outlet": "Aalto News", "date": "June 2022", "location": "Finland", "link": "https://..." }
-  ]
+    "personalInfo": {
+        "name": "César Iván Olvera Espinosa",
+        "title": "Doctoral researcher @ Aalto University",
+        "bio": "Doctoral researcher in Sustainable AI & Cloud Computing at Aalto University, Finland. Researching carbon-aware AI workload placement and sustainable cloud and network systems.",
+        "longBio": "Longer bio if you have it",
+        "affiliations": [
+            "Aalto University",
+            "Department of Information and Communications Engineering",
+            "Cloud & Network Computing Research Group"
+        ]
+    },
+    "researchInterests": [
+        "Cloud Computing",
+        "Sustainable AI",
+        "Green and Sustainable Computing",
+        "AI Inference Optimization",
+        "Software Energy Efficiency",
+        "Carbon-Aware Computing"
+    ],
+    "cv": {
+        "education": [
+            {
+                "degree": "Doctor of Science (Tech.) in Cloud and Network Computing",
+                "institution": "Aalto University",
+                "date": "2024-Present",
+                "description": "Research topic: Carbon-Aware AI inference service placement for Sustainable Cloud Computing",
+                "supervisor": "Prof. Gopika Premsankar"
+            },
+            {
+                "degree": "MSc. in Communication Engineering",
+                "institution": "Aalto University",
+                "date": "2021-2023",
+                "description": "Track: Cloud and Network Services",
+                "supervisor": "Prof. Jukka Manner"
+            },
+            {
+                "degree": "BSc. in Communications and Electronics Engineering",
+                "institution": "Instituto Politécnico Nacional",
+                "date": "2015-2020",
+                "description": "Specialization: Communications"
+            }
+        ],
+        "experience": [
+            {
+                "position": "Doctoral Researcher",
+                "institution": "Aalto University",
+                "date": "Jun 2024 – Present",
+                "description": "Research on carbon-aware workload shifting for AI inference, focusing on energy efficiency, carbon footprint reduction, and sustainable computing.",
+                "supervisor": "Prof. Gopika Premsankar"
+            },
+            {
+                "position": "Research Assistant in ICT for Climate actions",
+                "institution": "Aalto University",
+                "date": "Feb 2023 – Dec 2023",
+                "description": "Worked on performance evaluation and optimization of networked systems, energy consumption monitoring, and green software practices.",
+                "supervisor": "Prof. Jukka Manner"
+            },
+            {
+                "position": "Research Assistant in Internet Traffic Measurement and Analysis",
+                "institution": "Aalto University",
+                "date": "Jun 2022 – Aug 2022",
+                "description": "Developed exercises and material to introduce Big Data, Machine Learning and network measurements for the Internet Traffic Measurement and Analysis course.",
+                "supervisor": "Markus Peuhkuri"
+            }
+            // {
+            //     "position": "Technical Support Engineer",
+            //     "institution": "Ribbon Communications",
+            //     "date": "Mar 2021 – Aug 2021",
+            //     "description": "",
+            //     "supervisor": "David"
+            // }
+        ],
+        "awards": [
+            {
+                "title": "...",
+                "institution": "...",
+                "date": "...",
+                "description": "..."
+            }
+        ],
+        "teaching": [
+            {
+                "course": "...",
+                "institution": "...",
+                "period": "...",
+                "role": "..."
+            }
+        ],
+        "research": [
+            {
+                "project": "...",
+                "agency": "...",
+                "period": "...",
+                "amount": "...",
+                "pi": "...",
+                "description": "..."
+            }
+        ]
+    },
+    "projects": [
+        {
+            "title": "...",
+            "description": "...",
+            "tags": [
+                "..."
+            ],
+            "funding": "...",
+            "period": "...",
+            "role": "...",
+            "status": "Completed"
+        }
+    ],
+    "contact": [
+        {
+            "type": "email",
+            "label": "Email",
+            "value": "cesar.olveraespinosa@aalto.fi",
+            "link": "mailto:cesar.olveraespinosa@aalto.fi",
+            "icon": "📧"
+        },
+        {
+            "type": "linkedin",
+            "label": "LinkedIn",
+            "value": "linkedin.com/in/cesar-olvera/",
+            "link": "https://www.linkedin.com/in/cesar-olvera/",
+            "icon": "👨🏻‍💻"
+        }
+    ],
+    "languages": [
+        {
+            "language": "Spanish",
+            "level": "Native"
+        },
+        {
+            "language": "English",
+            "level": "Fluent"
+        }
+    ],
+    "news": [
+        {
+            "title": "Award...",
+            "date": "March 2025",
+            "description": "..."
+        }
+    ],
+    "speaking": [
+        {
+            "title": "...",
+            "event": "...",
+            "date": "...",
+            "location": "...",
+            "type": "Keynote",
+            "audience": "500+",
+            "slides": "https://..."
+        }
+    ],
+    "service": [
+        {
+            "role": "Reviewer",
+            "venue": "TOS",
+            "period": "2024–Present"
+        }
+    ],
+    "activities": [
+        {
+            "title": "Volunteer - Slush",
+            "organization": "Slush",
+            "location": "Helsinki",
+            "date": "2023",
+            "description": "..."
+        }
+    ],
+    "media": [
+        {
+            "title": "Feature name",
+            "outlet": "Aalto News",
+            "date": "June 2022",
+            "location": "Finland",
+            "link": "https://..."
+        }
+    ]
 }
