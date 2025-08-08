@@ -2,7 +2,7 @@
   "personalInfo": {
     "name": "César Iván Olvera Espinosa",
     "title": "Doctoral researcher @ Aalto University",
-    "bio": "Doctoral researcher in Cloud and Network Computing at Aalto University, Finland. Specializing in ICT for climate actions, software performance analysis, and energy consumption optimization.",
+    "bio": "Doctoral researcher in Cloud and Network Computing at Aalto University, Finland. Researching carbon-aware AI workload placement and sustainable cloud and network systems.",
     "longBio": "Longer bio if you have it",
     "affiliations": ["Aalto University", "DICE", "Cloud & Network Computing"]
   },
