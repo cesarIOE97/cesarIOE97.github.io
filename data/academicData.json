@@ -6,7 +6,7 @@
     "longBio": "Longer bio if you have it",
     "affiliations": ["Aalto University", "DICE", "Cloud & Network Computing"]
   },
-  "researchInterests": ["Cloud Computing", "Sustainable AI"],
+  "researchInterests": ["Cloud Computing", "Sustainable AI", "Software Development", "Green and Sustainable Computing"],
   "cv": {
     "education": [ 
         { "degree": "MSc. in Communication Engineering", "institution": "Aalto University", "date": "2021-2023", "description": "Track: Cloud and Network Services", "supervisor": "Jukka Manner" } ,
