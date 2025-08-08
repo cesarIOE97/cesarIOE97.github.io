@@ -1,14 +1,16 @@
 {
   "personalInfo": {
-    "name": "Your Name",
-    "title": "Your Title",
-    "bio": "Short bio",
+    "name": "César Iván Olvera Espinosa",
+    "title": "Doctoral researcher @ Aalto University",
+    "bio": "Doctoral researcher in Cloud and Network Computing at Aalto University, Finland. Specializing in ICT for climate actions, software performance analysis, and energy consumption optimization.",
     "longBio": "Longer bio if you have it",
     "affiliations": ["Aalto University", "DICE", "Cloud & Network Computing"]
   },
   "researchInterests": ["Cloud Computing", "Sustainable AI"],
   "cv": {
-    "education": [ { "degree": "...", "institution": "...", "date": "...", "description": "...", "advisor": "..." } ],
+    "education": [ 
+        { "degree": "MSc. in Communication Engineering", "institution": "Aalto University", "date": "2021-2023", "description": "Track: Cloud and Network Services", "supervisor": "Jukka Manner" } ,
+        { "degree": "BSc. in Communications and Electronics Engineering", "institution": "Instituto Politécnico Nacional", "date": "2015-2023", "description": "Track: Communications" } ],
     "experience": [ { "position": "...", "institution": "...", "date": "...", "description": "...", "supervisor": "..." } ],
     "awards":     [ { "title": "...", "institution": "...", "date": "...", "description": "..." } ],
     "teaching":   [ { "course": "...", "institution": "...", "period": "...", "role": "..." } ],
@@ -18,7 +20,8 @@
     { "title": "...", "description": "...", "tags": ["..."], "funding": "...", "period": "...", "role": "...", "status": "Completed" }
   ],
   "contact": [
-    { "type": "email", "label": "Email", "value": "name@uni.fi", "link": "mailto:name@uni.fi", "icon": "📧" }
+    { "type": "email", "label": "Email", "value": "cesar.olveraespinosa@aalto.fi", "link": "mailto:cesar.olveraespinosa@aalto.fi", "icon": "📧" },
+    { "type": "linkedin", "label": "LinkedIn", "value": "linkedin.com/in/cesar-olvera/", "link": "https://www.linkedin.com/in/cesar-olvera/", "icon": "👨🏻‍💻"}
   ],
   "languages": [
     { "language": "Spanish", "level": "Native" },
