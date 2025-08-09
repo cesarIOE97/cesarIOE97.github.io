@@ -919,6 +919,9 @@
             populateContactDetails();
             initializeChart();
             
+            // Initialize search and filter after content is loaded
+            initializeSearchAndFilterFunctionality();
+            
             // Show content with smooth fade-in after everything is loaded
             setTimeout(() => {
                 document.body.classList.remove('content-loading');
@@ -1227,34 +1230,48 @@
 
             publicationsList.innerHTML = publications.map(pub => `
                 <div class="publication-card glass rounded-xl p-6 hover:shadow-lg transition-all-300" data-type="${pub.type}" data-tags="${(pub.tags || []).join(' ')}">
-                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
                         <div class="flex-1">
-                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">${pub.title}</h3>
-                            <p class="text-slate-600 dark:text-slate-300 mb-2">
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 leading-tight pr-4">${pub.title}</h3>
+                                <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium whitespace-nowrap">
+                                    ${pub.type}
+                                </span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 mb-2 font-medium">
                                 ${Array.isArray(pub.authors) ? pub.authors.join(', ') : pub.authors || 'Author not specified'}
                             </p>
-                            <div class="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400 mb-2">
+                            <div class="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400 mb-3">
                                 <span class="font-medium">${pub.venue || 'Venue TBD'}</span>
+                                <span>•</span>
                                 <span>${pub.year || 'Year TBD'}</span>
-                                <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">${pub.type}</span>
+                                ${pub.metrics?.citations ? `
+                                    <span>•</span>
+                                    <span class="text-green-600 dark:text-green-400">${pub.metrics.citations} citations</span>
+                                ` : ''}
                             </div>
-                            ${pub.abstract ? `<p class="text-slate-600 dark:text-slate-400 text-sm mb-2">${pub.abstract}</p>` : ''}
+                            ${pub.abstract ? `<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">${pub.abstract}</p>` : ''}
                         </div>
-                        <div class="flex gap-3">
+                        <div class="flex flex-col sm:flex-row gap-2 lg:flex-col lg:min-w-[120px]">
                             ${pub.links?.pdf ? `
-                                <a href="${pub.links.pdf}" target="_blank" class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-lg text-sm font-medium hover:bg-primary-200 dark:hover:bg-primary-900/50 transition-colors">
+                                <a href="${pub.links.pdf}" target="_blank" class="px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg text-sm font-medium hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors text-center flex items-center justify-center gap-1">
                                     📄 PDF
                                 </a>
                             ` : ''}
                             ${pub.links?.doi ? `
-                                <a href="${pub.links.doi}" target="_blank" class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                                <a href="${pub.links.doi}" target="_blank" class="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors text-center flex items-center justify-center gap-1">
                                     🔗 DOI
                                 </a>
                             ` : ''}
                             ${pub.links?.arxiv ? `
-                                <a href="${pub.links.arxiv}" target="_blank" class="px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg text-sm font-medium hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors">
+                                <a href="${pub.links.arxiv}" target="_blank" class="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 rounded-lg text-sm font-medium hover:bg-orange-200 dark:hover:bg-orange-900/50 transition-colors text-center flex items-center justify-center gap-1">
                                     📋 arXiv
                                 </a>
+                            ` : ''}
+                            ${!pub.links?.pdf && !pub.links?.doi && !pub.links?.arxiv ? `
+                                <div class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded-lg text-sm text-center">
+                                    Coming Soon
+                                </div>
                             ` : ''}
                         </div>
                     </div>
@@ -1502,17 +1519,27 @@
         }
 
         // Search and Filter functionality
-        function initializeSearchAndFilter() {
+        function initializeSearchAndFilterFunctionality() {
             // Project search
             const projectSearch = document.getElementById('project-search');
             if (projectSearch) {
                 projectSearch.addEventListener('input', (e) => {
                     const query = e.target.value.toLowerCase();
                     const projects = document.querySelectorAll('.project-card');
+                    const noResultsMsg = document.getElementById('no-projects-message');
+                    let visibleCount = 0;
+                    
                     projects.forEach(project => {
                         const text = project.textContent.toLowerCase();
-                        project.style.display = text.includes(query) ? 'block' : 'none';
+                        const isVisible = text.includes(query);
+                        project.style.display = isVisible ? 'block' : 'none';
+                        if (isVisible) visibleCount++;
                     });
+                    
+                    // Show/hide no results message
+                    if (noResultsMsg) {
+                        noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+                    }
                 });
             }
 
@@ -1522,10 +1549,20 @@
                 publicationSearch.addEventListener('input', (e) => {
                     const query = e.target.value.toLowerCase();
                     const publications = document.querySelectorAll('.publication-card');
+                    const noResultsMsg = document.getElementById('no-publications-message');
+                    let visibleCount = 0;
+                    
                     publications.forEach(publication => {
                         const text = publication.textContent.toLowerCase();
-                        publication.style.display = text.includes(query) ? 'block' : 'none';
+                        const isVisible = text.includes(query);
+                        publication.style.display = isVisible ? 'block' : 'none';
+                        if (isVisible) visibleCount++;
                     });
+                    
+                    // Show/hide no results message
+                    if (noResultsMsg) {
+                        noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+                    }
                 });
             }
         }
@@ -1534,79 +1571,89 @@
         function filterProjects(filter) {
             const projects = document.querySelectorAll('.project-card');
             const filterBtns = document.querySelectorAll('.project-filter-btn');
+            const noResultsMsg = document.getElementById('no-projects-message');
+            let visibleCount = 0;
             
             // Update active button
             filterBtns.forEach(btn => {
-                btn.classList.remove('active', 'border-primary-300', 'text-primary-700');
-                btn.classList.add('border-slate-300', 'text-slate-700');
+                btn.classList.remove('active', 'border-primary-300', 'text-primary-700', 'dark:text-primary-300');
+                btn.classList.add('border-slate-300', 'dark:border-slate-600', 'text-slate-700', 'dark:text-slate-300');
             });
             
-            try {
-                const activeBtn = document.querySelector(`[data-filter="${filter}"]`);
-                if (activeBtn) {
-                    activeBtn.classList.add('active', 'border-primary-300', 'text-primary-700');
-                    activeBtn.classList.remove('border-slate-300', 'text-slate-700');
-                }
-            } catch (error) {
-                console.warn('Error finding project filter button:', error, 'filter:', filter);
+            // Find and activate the correct button
+            const activeBtn = document.querySelector(`.project-filter-btn[data-filter="${filter}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active', 'border-primary-300', 'text-primary-700', 'dark:text-primary-300');
+                activeBtn.classList.remove('border-slate-300', 'dark:border-slate-600', 'text-slate-700', 'dark:text-slate-300');
             }
             
             // Filter projects
             projects.forEach(project => {
+                let isVisible = false;
                 if (filter === 'all') {
-                    project.style.display = 'block';
+                    isVisible = true;
                 } else {
-                    const tags = project.getAttribute('data-tags').toLowerCase();
-                    project.style.display = tags.includes(filter.toLowerCase()) ? 'block' : 'none';
+                    const tags = project.getAttribute('data-tags') || '';
+                    isVisible = tags.toLowerCase().includes(filter.toLowerCase());
                 }
+                
+                project.style.display = isVisible ? 'block' : 'none';
+                if (isVisible) visibleCount++;
             });
+            
+            // Show/hide no results message
+            if (noResultsMsg) {
+                noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
         }
 
         // Filter Publications
         function filterPublications(filter) {
             const publications = document.querySelectorAll('.publication-card');
             const filterBtns = document.querySelectorAll('.publication-filter-btn');
+            const noResultsMsg = document.getElementById('no-publications-message');
+            let visibleCount = 0;
             
             // Update active button
             filterBtns.forEach(btn => {
-                btn.classList.remove('active', 'border-primary-300', 'text-primary-700');
-                btn.classList.add('border-slate-300', 'text-slate-700');
+                btn.classList.remove('active', 'border-primary-300', 'text-primary-700', 'dark:text-primary-300');
+                btn.classList.add('border-slate-300', 'dark:border-slate-600', 'text-slate-700', 'dark:text-slate-300');
             });
             
-            try {
-                // Map filter names to match data-filter attributes
-                const filterMap = {
-                    'journal': 'Journal Article',
-                    'conference': 'Conference Paper', 
-                    'workshop': 'Workshop Paper',
-                    'all': 'all'
-                };
-                const dataFilterValue = filterMap[filter] || filter;
-                
-                const activeBtn = document.querySelector(`[data-filter="${dataFilterValue}"]`);
-                if (activeBtn) {
-                    activeBtn.classList.add('active', 'border-primary-300', 'text-primary-700');
-                    activeBtn.classList.remove('border-slate-300', 'text-slate-700');
-                }
-            } catch (error) {
-                console.warn('Error finding publication filter button:', error, 'filter:', filter);
+            // Map filter names to match data-filter attributes and find active button
+            const filterMap = {
+                'all': 'all',
+                'journal': 'Journal Article',
+                'conference': 'Conference Paper', 
+                'workshop': 'Workshop Paper'
+            };
+            
+            const dataFilterValue = filterMap[filter] || filter;
+            const activeBtn = document.querySelector(`.publication-filter-btn[data-filter="${dataFilterValue}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active', 'border-primary-300', 'text-primary-700', 'dark:text-primary-300');
+                activeBtn.classList.remove('border-slate-300', 'dark:border-slate-600', 'text-slate-700', 'dark:text-slate-300');
             }
             
             // Filter publications
             publications.forEach(publication => {
+                let isVisible = false;
                 if (filter === 'all') {
-                    publication.style.display = 'block';
+                    isVisible = true;
                 } else {
                     const type = publication.getAttribute('data-type');
-                    const filterMap = {
-                        'journal': 'Journal Article',
-                        'conference': 'Conference Paper',
-                        'workshop': 'Workshop Paper'
-                    };
                     const targetType = filterMap[filter] || filter;
-                    publication.style.display = type === targetType ? 'block' : 'none';
+                    isVisible = type === targetType;
                 }
+                
+                publication.style.display = isVisible ? 'block' : 'none';
+                if (isVisible) visibleCount++;
             });
+            
+            // Show/hide no results message
+            if (noResultsMsg) {
+                noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
         }
 
         // Contact utilities
@@ -1871,57 +1918,6 @@
             });
         }
 
-        // Search and filter functionality
-        function initializeSearchAndFilter() {
-            // Project filtering  
-            const projectFilter = document.getElementById('project-filter');
-            if (projectFilter) {
-                projectFilter.addEventListener('change', (e) => filterProjects(e.target.value));
-            }
-
-            // Publication filtering
-            const publicationFilter = document.getElementById('publication-filter');
-            if (publicationFilter) {
-                publicationFilter.addEventListener('change', (e) => filterPublications(e.target.value));
-            }
-
-            // Search functionality
-            const searchInput = document.getElementById('search-input');
-            if (searchInput) {
-                searchInput.addEventListener('input', performSearch);
-            }
-        }
-
-        function performSearch() {
-            const query = document.getElementById('search-input').value.toLowerCase();
-            const searchableElements = document.querySelectorAll('.interactive-card');
-            
-            searchableElements.forEach(element => {
-                const text = element.textContent.toLowerCase();
-                element.style.display = text.includes(query) ? 'block' : 'none';
-            });
-        }
-
-        // Add missing essential functions
-        function populatePublications() {
-            const publicationsList = document.getElementById('publications-list');
-            if (!publicationsList) return;
-            
-            const publications = portfolioData.publications || [];
-            if (publications.length === 0) {
-                publicationsList.innerHTML = '<div class="text-center py-8 text-slate-500">Publications coming soon...</div>';
-                return;
-            }
-            
-            publicationsList.innerHTML = publications.map(pub => `
-                <div class="publication-card glass rounded-xl p-6">
-                    <h3 class="text-lg font-bold mb-2">${pub.title}</h3>
-                    <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">${pub.authors}</p>
-                    <p class="text-primary-600 dark:text-primary-400 text-sm">${pub.venue} (${pub.year})</p>
-                </div>
-            `).join('');
-        }
-
         function populateTalks() {
             const talksList = document.getElementById('talks-list');
             if (!talksList) return;
@@ -2081,7 +2077,6 @@
                 initializeTheme();
                 initializeMobileMenu();
                 initializeSmoothScrolling();
-                initializeSearchAndFilter();
                 loadData();
             } catch (error) {
                 console.error('Error during initialization:', error);
