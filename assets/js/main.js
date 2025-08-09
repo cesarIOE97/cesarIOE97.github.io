@@ -154,6 +154,101 @@ const optimizedScrollHandler = debounce(() => {
 
 window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
 
+// Research Journey Section Population
+function populateResearchJourney() {
+  fetch('data/portfolio.json')
+    .then(response => response.json())
+    .then(data => {
+      // Populate research metrics
+      populateResearchMetrics(data);
+      
+      // Populate current research focus
+      populateCurrentResearch(data);
+      
+      // Populate research tools
+      populateResearchTools(data);
+    })
+    .catch(error => {
+      console.error('Error loading research journey data:', error);
+    });
+}
+
+function populateResearchMetrics(data) {
+  const metricsGrid = document.getElementById('metrics-grid');
+  if (!metricsGrid) return;
+  
+  const metrics = [
+    {
+      number: data.publications ? data.publications.length : 0,
+      label: 'Publications',
+      icon: '📚',
+      color: 'from-blue-500 to-blue-600'
+    },
+    {
+      number: data.projects ? data.projects.length : 0,
+      label: 'Active Projects',
+      icon: '🔬',
+      color: 'from-green-500 to-green-600'
+    },
+    {
+      number: data.research_areas ? data.research_areas.length : 0,
+      label: 'Research Areas',
+      icon: '🎯',
+      color: 'from-purple-500 to-purple-600'
+    },
+    {
+      number: data.news ? data.news.filter(n => n.type === 'Award').length : 0,
+      label: 'Awards',
+      icon: '🏆',
+      color: 'from-amber-500 to-amber-600'
+    }
+  ];
+  
+  metricsGrid.innerHTML = metrics.map(metric => `
+    <div class="glass rounded-2xl p-6 text-center interactive-card hover:scale-105 transition-all duration-300">
+      <div class="w-12 h-12 bg-gradient-to-br ${metric.color} rounded-full flex items-center justify-center mx-auto mb-3">
+        <span class="text-xl">${metric.icon}</span>
+      </div>
+      <div class="text-3xl font-bold text-slate-800 dark:text-white mb-1">${metric.number}</div>
+      <div class="text-sm text-slate-600 dark:text-slate-300">${metric.label}</div>
+    </div>
+  `).join('');
+}
+
+function populateCurrentResearch(data) {
+  const currentResearch = document.getElementById('current-research');
+  if (!currentResearch || !data.research_areas) return;
+  
+  currentResearch.innerHTML = data.research_areas.slice(0, 3).map(area => `
+    <div class="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg border-l-4 border-green-500">
+      <h4 class="font-semibold text-slate-800 dark:text-white mb-2">${area.name}</h4>
+      <p class="text-sm text-slate-600 dark:text-slate-300">${area.description}</p>
+    </div>
+  `).join('');
+}
+
+function populateResearchTools(data) {
+  const researchTools = document.getElementById('research-tools');
+  if (!researchTools) return;
+  
+  const tools = [
+    { name: 'Machine Learning', icon: '🤖', description: 'TensorFlow, PyTorch, Scikit-learn' },
+    { name: 'Cloud Computing', icon: '☁️', description: 'AWS, Azure, Google Cloud Platform' },
+    { name: 'Data Analysis', icon: '📊', description: 'Python, R, Jupyter, Pandas' },
+    { name: 'Sustainability', icon: '🌱', description: 'CodeCarbon, Green Algorithms, LCA tools' }
+  ];
+  
+  researchTools.innerHTML = tools.map(tool => `
+    <div class="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg border-l-4 border-primary-500">
+      <div class="flex items-center mb-2">
+        <span class="text-lg mr-2">${tool.icon}</span>
+        <h4 class="font-semibold text-slate-800 dark:text-white">${tool.name}</h4>
+      </div>
+      <p class="text-sm text-slate-600 dark:text-slate-300">${tool.description}</p>
+    </div>
+  `).join('');
+}
+
 // Error handling for data loading
 window.addEventListener('error', (e) => {
   console.error('Website error:', e.error);
