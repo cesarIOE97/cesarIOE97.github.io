@@ -4,9 +4,9 @@
         "title": "Doctoral Researcher @ Aalto University",
         "email": "cesar.olveraespinosa@aalto.fi",
         "location": "Helsinki, Finland",
-        "bio": "Doctoral researcher in Cloud & Network Computing. I design carbon-aware AI inference systems that shift workloads in time & space to minimize CO₂e while meeting SLOs.",
+        "bio": "Doctoral researcher in Cloud & Network Computing. Designing carbon-aware AI inference systems that shift workloads to minimize CO₂e while meeting SLOs.",
         "longBio": "As a doctoral researcher at Aalto University, I focus on developing sustainable AI and cloud computing solutions that address the growing environmental impact of digital technologies. My research combines machine learning, distributed systems, and environmental science to create intelligent systems that automatically optimize for both performance and carbon efficiency.",
-        "profileImage": "CesarOlvera.JPG",
+        "profileImage": "CesarOlvera_2.JPG",
         "affiliations": [
             "Aalto University",
             "Department of Information and Communications Engineering",
@@ -18,9 +18,9 @@
         "cv": "assets/pdf/Cesar_Olvera_CV.pdf",
         "github": "https://github.com/cesarIOE97",
         "linkedin": "https://www.linkedin.com/in/cesar-olvera/",
-        "google_scholar": "https://scholar.google.com/citations?user=YOUR_ID",
+        "google_scholar": "https://scholar.google.com/citations?user=example",
         "twitter": "https://twitter.com/cesarolvera_",
-        "orcid": "https://orcid.org/0000-0000-0000-0000"
+        "orcid": "https://orcid.org/0009-0007-1136-3308"
     },
     "researchInterests": [
         "Cloud Computing",

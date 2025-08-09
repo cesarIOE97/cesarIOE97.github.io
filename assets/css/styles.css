@@ -8,6 +8,13 @@ body {
     line-height: 1.6;
 }
 
+/* Profile image - ensure it's always circular */
+#profile-image {
+    aspect-ratio: 1/1 !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+}
+
 /* Additional utility classes for enhanced interactions */
 .transition-all-300 {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -104,6 +111,8 @@ body {
     #profile-image {
         width: 12rem !important;
         height: 12rem !important;
+        aspect-ratio: 1/1 !important;
+        object-fit: cover !important;
     }
     
     /* Social links mobile spacing */
@@ -154,6 +163,8 @@ body {
     #profile-image {
         width: 10rem !important;
         height: 10rem !important;
+        aspect-ratio: 1/1 !important;
+        object-fit: cover !important;
     }
     
     /* Compact navigation */
@@ -198,6 +209,8 @@ body {
     #profile-image {
         width: 14rem !important;
         height: 14rem !important;
+        aspect-ratio: 1/1 !important;
+        object-fit: cover !important;
     }
     
     /* Tablet layout optimizations */
@@ -239,6 +252,8 @@ body {
     #profile-image {
         width: 16rem !important;
         height: 16rem !important;
+        aspect-ratio: 1/1 !important;
+        object-fit: cover !important;
     }
     
     /* Desktop layout optimizations */
@@ -258,6 +273,8 @@ body {
     #profile-image {
         width: 18rem !important;
         height: 18rem !important;
+        aspect-ratio: 1/1 !important;
+        object-fit: cover !important;
     }
     
     .text-5xl.md\:text-7xl {
