@@ -68,4 +68,205 @@ body {
     .section-title {
         font-size: 2rem;
     }
+    
+    /* Better mobile spacing */
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Mobile card adjustments */
+    .interactive-card,
+    .research-card,
+    .project-card {
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+    
+    /* Mobile navigation improvements */
+    .mobile-menu {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+    
+    /* Mobile typography */
+    h1 { font-size: clamp(1.75rem, 5vw, 3rem); }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); }
+    h3 { font-size: clamp(1.25rem, 3vw, 1.875rem); }
+    
+    /* Mobile button sizes */
+    button, .btn {
+        min-height: 44px; /* Touch-friendly minimum */
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 640px) {
+    /* Extra small screens */
+    .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    /* Smaller mobile adjustments */
+    .interactive-card {
+        padding: 0.75rem;
+    }
+    
+    /* Stack elements vertically on mobile */
+    .flex-mobile-stack {
+        flex-direction: column;
+    }
+    
+    /* Mobile-optimized grid */
+    .grid-mobile-1 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    /* Tablet-specific styles */
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 2.25rem;
+    }
+    
+    /* Tablet grid adjustments */
+    .grid-tablet-2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Desktop improvements */
+    .interactive-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+}
+
+/* Enhanced animations and transitions */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* Loading states */
+.loading-shimmer {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Dark mode specific improvements */
+@media (prefers-color-scheme: dark) {
+    .loading-shimmer {
+        background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+        background-size: 200% 100%;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    /* Touch device optimizations */
+    .interactive-card:hover {
+        transform: none; /* Disable hover effects on touch devices */
+    }
+    
+    .interactive-card:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    /* Larger touch targets */
+    a, button, .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .glass {
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid #000;
+    }
+    
+    .dark .glass {
+        background: rgba(0, 0, 0, 0.95);
+        border: 2px solid #fff;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .interactive-card {
+        transform: none !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .nav, .mobile-menu, #theme-toggle, .no-print {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+        color: #000;
+        background: #fff;
+    }
+    
+    .interactive-card {
+        break-inside: avoid;
+        border: 1px solid #000;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Focus indicators for accessibility */
+*:focus {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
 }

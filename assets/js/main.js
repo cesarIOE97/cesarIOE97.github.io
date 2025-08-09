@@ -22,10 +22,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     populateResearchSection();
     populateProjectsSection();
     populatePublicationsSection();
-    populateEducationSection();
-    populateExperienceSection();
-    populateSkillsSection();
-    populateImpactSection();
     
     // Initialize interactive features
     initializeFilterAndSearch();
@@ -316,7 +312,7 @@ function populateResearchSection() {
 function populateProjectsSection() {
   if (!portfolioData?.projects) return;
   
-  const projectsContainer = document.getElementById('projects-container');
+  const projectsContainer = document.getElementById('projects-grid');
   if (!projectsContainer) return;
   
   projectsContainer.innerHTML = portfolioData.projects.map(project => `
@@ -364,7 +360,7 @@ function populateProjectsSection() {
 function populatePublicationsSection() {
   if (!portfolioData?.publications) return;
   
-  const publicationsContainer = document.getElementById('publications-container');
+  const publicationsContainer = document.getElementById('publications-list');
   if (!publicationsContainer) return;
   
   const sortedPublications = [...portfolioData.publications].sort((a, b) => 
@@ -411,35 +407,24 @@ function populatePublicationsSection() {
   `).join('');
 }
 
-function populateEducationSection() {
-  if (!portfolioData?.education) return;
-  
-  const educationContainer = document.getElementById('education-container');
-  if (!educationContainer) return;
-  
-  educationContainer.innerHTML = portfolioData.education.map(edu => `
-    <div class="interactive-card p-6 glass rounded-2xl border border-slate-200/20 dark:border-slate-700/30 hover:border-primary-300/50 transition-all duration-300">
-      <div class="flex justify-between items-start mb-3">
-        <div>
-          <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200">${edu.degree}</h3>
-          <p class="text-primary-600 dark:text-primary-400 font-medium">${edu.institution}</p>
-          <p class="text-slate-500 dark:text-slate-500 text-sm">${edu.location}</p>
-        </div>
-        <div class="text-right">
-          <span class="text-slate-600 dark:text-slate-400 text-sm">${edu.date}</span>
-          ${edu.status ? `
-            <div class="mt-1">
-              <span class="px-2 py-1 bg-${edu.status === 'Completed' ? 'green' : 'blue'}-100 dark:bg-${edu.status === 'Completed' ? 'green' : 'blue'}-900/30 text-${edu.status === 'Completed' ? 'green' : 'blue'}-700 dark:text-${edu.status === 'Completed' ? 'green' : 'blue'}-300 rounded-full text-xs">
-                ${edu.status}
-              </span>
-            </div>
-          ` : ''}
-        </div>
-      </div>
-      ${edu.description ? `<p class="text-slate-600 dark:text-slate-400 mb-2">${edu.description}</p>` : ''}
-      ${edu.supervisor ? `<p class="text-slate-500 dark:text-slate-500 text-sm"><strong>Supervisor:</strong> ${edu.supervisor}</p>` : ''}
-    </div>
-  `).join('');
+// Initialize all enhancements after DOM content is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  // Add small delay to ensure all content is rendered
+  setTimeout(() => {
+    initializeRippleEffects();
+    initializeMobileOptimizations();
+    initializeResponsiveDesign();
+    initializeAccessibility();
+  }, 500);
+});
+
+// Service worker registration for offline functionality (optional)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => console.log('SW registered'))
+      .catch(error => console.log('SW registration failed'));
+  });
 }
 
 function populateExperienceSection() {
@@ -613,7 +598,7 @@ function initializeFilterAndSearch() {
 function filterProjects(filterValue) {
   if (!portfolioData?.projects) return;
   
-  const projectsContainer = document.getElementById('projects-container');
+  const projectsContainer = document.getElementById('projects-grid');
   if (!projectsContainer) return;
   
   let filteredProjects = portfolioData.projects;
@@ -676,7 +661,7 @@ function filterProjects(filterValue) {
 function filterPublications(filterValue) {
   if (!portfolioData?.publications) return;
   
-  const publicationsContainer = document.getElementById('publications-container');
+  const publicationsContainer = document.getElementById('publications-list');
   if (!publicationsContainer) return;
   
   let filteredPublications = portfolioData.publications;
@@ -750,10 +735,27 @@ function searchContent(searchTerm) {
       project.technologies?.some(tech => tech.toLowerCase().includes(searchTerm))
     );
     
-    const projectsContainer = document.getElementById('projects-container');
+    const projectsContainer = document.getElementById('projects-grid');
     if (projectsContainer && filteredProjects.length > 0) {
-      // Update projects with filtered results
-      // Implementation similar to filterProjects
+      // Update projects with filtered results using the same template as filterProjects
+      projectsContainer.innerHTML = filteredProjects.map(project => `
+        <div class="project-card interactive-card p-6 glass rounded-2xl border border-slate-200/20 dark:border-slate-700/30 hover:border-primary-300/50 transition-all duration-300">
+          <div class="flex justify-between items-start mb-4">
+            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200">${project.title}</h3>
+            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium capitalize">
+              ${project.status}
+            </span>
+          </div>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">${project.description}</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            ${project.technologies?.map(tech => `
+              <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full text-sm">
+                ${tech}
+              </span>
+            `).join('') || ''}
+          </div>
+        </div>
+      `).join('');
     }
   }
   
@@ -766,10 +768,19 @@ function searchContent(searchTerm) {
       (pub.abstract && pub.abstract.toLowerCase().includes(searchTerm))
     );
     
-    const publicationsContainer = document.getElementById('publications-container');
+    const publicationsContainer = document.getElementById('publications-list');
     if (publicationsContainer && filteredPublications.length > 0) {
-      // Update publications with filtered results
-      // Implementation similar to filterPublications
+      // Update publications with filtered results using the same template as filterPublications
+      publicationsContainer.innerHTML = filteredPublications.map(pub => `
+        <div class="interactive-card p-6 glass rounded-2xl border border-slate-200/20 dark:border-slate-700/30 hover:border-primary-300/50 transition-all duration-300">
+          <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mb-3">${pub.title}</h3>
+          <div class="text-slate-600 dark:text-slate-400 mb-3">
+            <p class="font-medium">${pub.authors}</p>
+            <p class="italic">${pub.venue}</p>
+            <p class="text-sm">${pub.date || pub.year}</p>
+          </div>
+        </div>
+      `).join('');
     }
   }
 }
