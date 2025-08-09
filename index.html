@@ -1871,7 +1871,7 @@
             
             searchableElements.forEach(element => {
                 const text = element.textContent.toLowerCase();
-                    .display = text.includes(query) ? 'block' : 'none';
+                element.style.display = text.includes(query) ? 'block' : 'none';
             });
         }        // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
