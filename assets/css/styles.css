@@ -99,10 +99,32 @@ body {
         min-height: 44px; /* Touch-friendly minimum */
         padding: 12px 20px;
     }
+    
+    /* Profile image mobile adjustments */
+    #profile-image {
+        width: 12rem !important;
+        height: 12rem !important;
+    }
+    
+    /* Social links mobile spacing */
+    .flex.justify-center.space-x-6 {
+        gap: 1rem;
+    }
+    
+    /* Publications and projects mobile layout */
+    .grid.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    /* Search inputs mobile optimization */
+    input[type="text"] {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
 }
 
 @media (max-width: 640px) {
-    /* Extra small screens */
+    /* Extra small screens (smaller phones) */
     .hero-title {
         font-size: 2rem;
         line-height: 1.2;
@@ -127,10 +149,37 @@ body {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
+    
+    /* Very small mobile profile image */
+    #profile-image {
+        width: 10rem !important;
+        height: 10rem !important;
+    }
+    
+    /* Compact navigation */
+    .px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Responsive text sizes */
+    .text-5xl.md\:text-7xl {
+        font-size: 2rem;
+    }
+    
+    .text-xl.md\:text-2xl {
+        font-size: 1.125rem;
+    }
+    
+    /* Filter buttons mobile */
+    .flex.flex-wrap.justify-center.gap-3 button {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-    /* Tablet-specific styles */
+    /* Tablet-specific styles (iPad, Android tablets) */
     .hero-title {
         font-size: 3rem;
     }
@@ -144,6 +193,39 @@ body {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
+    
+    /* Profile image tablet size */
+    #profile-image {
+        width: 14rem !important;
+        height: 14rem !important;
+    }
+    
+    /* Tablet layout optimizations */
+    .grid.md\:grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    
+    .grid.md\:grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .grid.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    /* Tablet typography adjustments */
+    .text-4xl.md\:text-5xl {
+        font-size: 2.5rem;
+    }
+    
+    /* Better touch targets for tablets */
+    button, .btn, a {
+        min-height: 40px;
+        padding: 10px 16px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -151,6 +233,40 @@ body {
     .interactive-card:hover {
         transform: translateY(-6px);
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    /* Desktop profile image */
+    #profile-image {
+        width: 16rem !important;
+        height: 16rem !important;
+    }
+    
+    /* Desktop layout optimizations */
+    .max-w-5xl {
+        max-width: 80rem;
+    }
+    
+    /* Enhanced desktop interactions */
+    .glass:hover {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+}
+
+@media (min-width: 1440px) {
+    /* Large desktop screens */
+    #profile-image {
+        width: 18rem !important;
+        height: 18rem !important;
+    }
+    
+    .text-5xl.md\:text-7xl {
+        font-size: 4rem;
+    }
+    
+    .container {
+        max-width: 1400px;
+        margin: 0 auto;
     }
 }
 
@@ -256,17 +372,83 @@ body {
     }
 }
 
-/* Focus indicators for accessibility */
-*:focus {
-    outline: 2px solid #3B82F6;
-    outline-offset: 2px;
+/* Platform-specific optimizations */
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    /* Prevent zoom on input focus */
+    input[type="text"],
+    input[type="email"],
+    input[type="search"],
+    textarea {
+        font-size: 16px !important;
+    }
+    
+    /* Fix iOS viewport issues */
+    body {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Better touch scrolling for cards */
+    .interactive-card {
+        -webkit-overflow-scrolling: touch;
+    }
 }
 
-*:focus:not(:focus-visible) {
-    outline: none;
+/* Android specific optimizations */
+@media screen and (-webkit-min-device-pixel-ratio: 1) {
+    /* Improve text rendering on Android */
+    body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
 }
 
-*:focus-visible {
-    outline: 2px solid #3B82F6;
-    outline-offset: 2px;
+/* Windows tablet/desktop improvements */
+@media screen and (min-width: 768px) and (pointer: coarse) {
+    /* Better touch targets for Windows tablets */
+    button, .btn, a {
+        min-height: 48px;
+        min-width: 48px;
+    }
+    
+    /* Larger interactive areas */
+    .interactive-card {
+        padding: 1.5rem;
+    }
+}
+
+/* macOS/iOS momentum scrolling */
+* {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Better cross-browser compatibility */
+.glass {
+    /* Fallback for browsers that don't support backdrop-filter */
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .glass {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Dark mode glass fallback */
+.dark .glass {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .dark .glass {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(0, 0, 0, 0.2);
+    }
 }

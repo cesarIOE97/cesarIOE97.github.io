@@ -267,21 +267,24 @@ function populateContactDetails() {
     }
   });
   
-  // Update social links
-  const socialLinks = {
-    github: links.github,
-    linkedin: links.linkedin,
-    twitter: links.twitter,
-    orcid: links.orcid,
-    'google-scholar': links.google_scholar
+  // Update social links with proper mapping
+  const socialMappings = {
+    'github-link': links.github,
+    'linkedin-link': links.linkedin,
+    'scholar-link': links.google_scholar,
+    'orcid-link': links.orcid,
+    'twitter-link': links.twitter
   };
   
-  Object.entries(socialLinks).forEach(([platform, url]) => {
-    const linkElement = document.getElementById(`${platform}-link`);
+  Object.entries(socialMappings).forEach(([elementId, url]) => {
+    const linkElement = document.getElementById(elementId);
     if (linkElement && url) {
       linkElement.href = url;
       linkElement.target = '_blank';
       linkElement.rel = 'noopener noreferrer';
+      console.log(`Updated ${elementId} with URL: ${url}`); // For debugging
+    } else if (linkElement) {
+      console.warn(`No URL found for ${elementId}`); // For debugging
     }
   });
 }
@@ -585,14 +588,168 @@ function initializeFilterAndSearch() {
     });
   });
   
-  // Search functionality
-  const searchInput = document.getElementById('search-input');
-  if (searchInput) {
-    searchInput.addEventListener('input', debounce((e) => {
+  // Projects search functionality
+  const projectSearchInput = document.getElementById('search-input');
+  if (projectSearchInput) {
+    projectSearchInput.addEventListener('input', debounce((e) => {
       const searchTerm = e.target.value.toLowerCase();
-      searchContent(searchTerm);
+      searchProjects(searchTerm);
     }, 300));
   }
+  
+  // Publications search functionality
+  const publicationSearchInput = document.getElementById('publication-search');
+  if (publicationSearchInput) {
+    publicationSearchInput.addEventListener('input', debounce((e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      searchPublications(searchTerm);
+    }, 300));
+  }
+}
+
+// Separate search functions for better organization
+function searchProjects(searchTerm) {
+  if (!portfolioData?.projects) return;
+  
+  const projectsContainer = document.getElementById('projects-grid');
+  if (!projectsContainer) return;
+  
+  let filteredProjects = portfolioData.projects;
+  
+  if (searchTerm) {
+    filteredProjects = portfolioData.projects.filter(project =>
+      project.title.toLowerCase().includes(searchTerm) ||
+      project.description.toLowerCase().includes(searchTerm) ||
+      project.technologies?.some(tech => tech.toLowerCase().includes(searchTerm))
+    );
+  }
+  
+  // Show/hide no results message
+  const noResultsMsg = document.getElementById('no-projects-message');
+  if (filteredProjects.length === 0 && searchTerm) {
+    projectsContainer.innerHTML = '';
+    if (noResultsMsg) noResultsMsg.classList.remove('hidden');
+  } else {
+    if (noResultsMsg) noResultsMsg.classList.add('hidden');
+    
+    projectsContainer.innerHTML = filteredProjects.map(project => `
+      <div class="project-card interactive-card p-6 glass rounded-2xl border border-slate-200/20 dark:border-slate-700/30 hover:border-primary-300/50 transition-all duration-300">
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200">${project.title}</h3>
+          <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium capitalize">
+            ${project.status}
+          </span>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400 mb-4">${project.description}</p>
+        <div class="flex flex-wrap gap-2 mb-4">
+          ${project.technologies?.map(tech => `
+            <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full text-sm">
+              ${tech}
+            </span>
+          `).join('') || ''}
+        </div>
+        ${project.links ? `
+          <div class="flex gap-3">
+            ${project.links.github ? `
+              <a href="${project.links.github}" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium">
+                🔗 Code
+              </a>
+            ` : ''}
+            ${project.links.demo ? `
+              <a href="${project.links.demo}" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium">
+                🚀 Demo
+              </a>
+            ` : ''}
+            ${project.links.paper ? `
+              <a href="${project.links.paper}" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium">
+                📄 Paper
+              </a>
+            ` : ''}
+          </div>
+        ` : ''}
+      </div>
+    `).join('');
+  }
+  
+  // Re-initialize animations
+  initializeAnimations();
+}
+
+function searchPublications(searchTerm) {
+  if (!portfolioData?.publications) return;
+  
+  const publicationsContainer = document.getElementById('publications-list');
+  if (!publicationsContainer) return;
+  
+  let filteredPublications = portfolioData.publications;
+  
+  if (searchTerm) {
+    filteredPublications = portfolioData.publications.filter(pub =>
+      pub.title.toLowerCase().includes(searchTerm) ||
+      pub.authors.toLowerCase().includes(searchTerm) ||
+      pub.venue.toLowerCase().includes(searchTerm) ||
+      (pub.abstract && pub.abstract.toLowerCase().includes(searchTerm)) ||
+      pub.type.toLowerCase().includes(searchTerm)
+    );
+  }
+  
+  // Show/hide no results message
+  const noResultsMsg = document.getElementById('no-publications-message');
+  if (filteredPublications.length === 0 && searchTerm) {
+    publicationsContainer.innerHTML = '';
+    if (noResultsMsg) noResultsMsg.classList.remove('hidden');
+  } else {
+    if (noResultsMsg) noResultsMsg.classList.add('hidden');
+    
+    const sortedPublications = [...filteredPublications].sort((a, b) => 
+      new Date(b.date || b.year) - new Date(a.date || a.year)
+    );
+    
+    publicationsContainer.innerHTML = sortedPublications.map(pub => `
+      <div class="interactive-card p-6 glass rounded-2xl border border-slate-200/20 dark:border-slate-700/30 hover:border-primary-300/50 transition-all duration-300">
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 leading-tight">${pub.title}</h3>
+          <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium ml-4">
+            ${pub.type}
+          </span>
+        </div>
+        <div class="text-slate-600 dark:text-slate-400 mb-3">
+          <p class="font-medium">${pub.authors}</p>
+          <p class="italic">${pub.venue}</p>
+          <p class="text-sm">${pub.date || pub.year}</p>
+        </div>
+        ${pub.abstract ? `<p class="text-slate-600 dark:text-slate-400 mb-4">${pub.abstract}</p>` : ''}
+        ${pub.links ? `
+          <div class="flex flex-wrap gap-3">
+            ${pub.links.pdf ? `
+              <a href="${pub.links.pdf}" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium">
+                📄 PDF
+              </a>
+            ` : ''}
+            ${pub.links.doi ? `
+              <a href="${pub.links.doi}" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium">
+                🔗 DOI
+              </a>
+            ` : ''}
+            ${pub.links.arxiv ? `
+              <a href="${pub.links.arxiv}" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-800 dark:hover:text-primary-300 font-medium">
+                📖 arXiv
+              </a>
+            ` : ''}
+          </div>
+        ` : ''}
+      </div>
+    `).join('');
+  }
+  
+  // Re-initialize animations
+  initializeAnimations();
 }
 
 function filterProjects(filterValue) {
@@ -717,72 +874,6 @@ function filterPublications(filterValue) {
   
   // Re-initialize animations for new content
   initializeAnimations();
-}
-
-function searchContent(searchTerm) {
-  if (!searchTerm) {
-    // Reset to show all content
-    populateProjectsSection();
-    populatePublicationsSection();
-    return;
-  }
-  
-  // Search projects
-  if (portfolioData?.projects) {
-    const filteredProjects = portfolioData.projects.filter(project =>
-      project.title.toLowerCase().includes(searchTerm) ||
-      project.description.toLowerCase().includes(searchTerm) ||
-      project.technologies?.some(tech => tech.toLowerCase().includes(searchTerm))
-    );
-    
-    const projectsContainer = document.getElementById('projects-grid');
-    if (projectsContainer && filteredProjects.length > 0) {
-      // Update projects with filtered results using the same template as filterProjects
-      projectsContainer.innerHTML = filteredProjects.map(project => `
-        <div class="project-card interactive-card p-6 glass rounded-2xl border border-slate-200/20 dark:border-slate-700/30 hover:border-primary-300/50 transition-all duration-300">
-          <div class="flex justify-between items-start mb-4">
-            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200">${project.title}</h3>
-            <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium capitalize">
-              ${project.status}
-            </span>
-          </div>
-          <p class="text-slate-600 dark:text-slate-400 mb-4">${project.description}</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            ${project.technologies?.map(tech => `
-              <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full text-sm">
-                ${tech}
-              </span>
-            `).join('') || ''}
-          </div>
-        </div>
-      `).join('');
-    }
-  }
-  
-  // Search publications
-  if (portfolioData?.publications) {
-    const filteredPublications = portfolioData.publications.filter(pub =>
-      pub.title.toLowerCase().includes(searchTerm) ||
-      pub.authors.toLowerCase().includes(searchTerm) ||
-      pub.venue.toLowerCase().includes(searchTerm) ||
-      (pub.abstract && pub.abstract.toLowerCase().includes(searchTerm))
-    );
-    
-    const publicationsContainer = document.getElementById('publications-list');
-    if (publicationsContainer && filteredPublications.length > 0) {
-      // Update publications with filtered results using the same template as filterPublications
-      publicationsContainer.innerHTML = filteredPublications.map(pub => `
-        <div class="interactive-card p-6 glass rounded-2xl border border-slate-200/20 dark:border-slate-700/30 hover:border-primary-300/50 transition-all duration-300">
-          <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mb-3">${pub.title}</h3>
-          <div class="text-slate-600 dark:text-slate-400 mb-3">
-            <p class="font-medium">${pub.authors}</p>
-            <p class="italic">${pub.venue}</p>
-            <p class="text-sm">${pub.date || pub.year}</p>
-          </div>
-        </div>
-      `).join('');
-    }
-  }
 }
 
 // Utility functions
