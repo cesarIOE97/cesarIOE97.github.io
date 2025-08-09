@@ -1297,23 +1297,62 @@
             }
 
             talksList.innerHTML = talks.map(talk => `
-                <div class="glass rounded-xl p-6 interactive-card">
-                    <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">${talk.title}</h3>
-                    <p class="text-primary-600 dark:text-primary-400 font-medium mb-2">${talk.event}</p>
-                    <div class="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400 mb-4">
-                        <span>📍 ${talk.where}</span>
-                        <span>📅 ${talk.date}</span>
-                        ${talk.type ? `<span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded text-xs">${talk.type}</span>` : ''}
+                <div class="glass rounded-xl p-6 interactive-card hover:shadow-lg transition-all-300">
+                    <div class="flex items-start justify-between mb-3">
+                        <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 leading-tight pr-4">${talk.title}</h3>
+                        ${talk.type ? `
+                            <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium whitespace-nowrap">
+                                ${talk.type}
+                            </span>
+                        ` : ''}
                     </div>
-                    ${talk.description ? `<p class="text-slate-600 dark:text-slate-300 text-sm mb-4">${talk.description}</p>` : ''}
-                    ${talk.links?.slides ? `
-                        <a href="${talk.links.slides}" target="_blank" class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm">
-                            View Slides
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                            </svg>
-                        </a>
+                    
+                    <p class="text-primary-600 dark:text-primary-400 font-semibold mb-3">${talk.event}</p>
+                    
+                    <div class="flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400 mb-4">
+                        ${talk.where ? `<span class="flex items-center gap-1">📍 ${talk.where}</span>` : ''}
+                        ${talk.date ? `<span class="flex items-center gap-1">📅 ${new Date(talk.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>` : ''}
+                        ${talk.audience ? `<span class="flex items-center gap-1">👥 ${talk.audience}</span>` : ''}
+                    </div>
+                    
+                    ${talk.description ? `<p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">${talk.description}</p>` : ''}
+                    
+                    ${talk.tags && talk.tags.length > 0 ? `
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${talk.tags.map(tag => `
+                                <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded text-xs">
+                                    ${tag}
+                                </span>
+                            `).join('')}
+                        </div>
                     ` : ''}
+                    
+                    <div class="flex flex-wrap gap-3">
+                        ${talk.links?.slides ? `
+                            <a href="${talk.links.slides}" target="_blank" class="inline-flex items-center gap-1 px-3 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors">
+                                📊 Slides
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </a>
+                        ` : ''}
+                        ${talk.links?.video ? `
+                            <a href="${talk.links.video}" target="_blank" class="inline-flex items-center gap-1 px-3 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg text-sm font-medium hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors">
+                                🎥 Video
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </a>
+                        ` : ''}
+                        ${talk.links?.code ? `
+                            <a href="${talk.links.code}" target="_blank" class="inline-flex items-center gap-1 px-3 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg text-sm font-medium hover:bg-green-200 dark:hover:bg-green-900/50 transition-colors">
+                                💻 Code
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </a>
+                        ` : ''}
+                    </div>
                 </div>
             `).join('');
         }
@@ -1454,34 +1493,101 @@
             const activitiesList = document.getElementById('activities-list');
             const mediaList = document.getElementById('media-list');
 
+            // Populate Activities
             if (activitiesList && portfolioData.activities) {
-                activitiesList.innerHTML = portfolioData.activities.map(activity => `
-                    <div class="glass rounded-xl p-4 interactive-card">
-                        <h4 class="font-bold text-slate-800 dark:text-slate-100 mb-1">${activity.title}</h4>
-                        <p class="text-primary-600 dark:text-primary-400 text-sm font-medium">${activity.organization}</p>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">${activity.date} • ${activity.location}</p>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm">${activity.description}</p>
-                    </div>
-                `).join('');
+                if (portfolioData.activities.length === 0) {
+                    activitiesList.innerHTML = `
+                        <div class="text-center py-8">
+                            <div class="text-slate-400 dark:text-slate-500">Activities coming soon...</div>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2">Expanding community engagement!</p>
+                        </div>
+                    `;
+                } else {
+                    activitiesList.innerHTML = portfolioData.activities.map(activity => `
+                        <div class="glass rounded-xl p-6 interactive-card hover:shadow-lg transition-all-300">
+                            <div class="flex items-start justify-between mb-3">
+                                <h4 class="font-bold text-slate-800 dark:text-slate-100 leading-tight pr-4">${activity.title}</h4>
+                                ${activity.role ? `
+                                    <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium whitespace-nowrap">
+                                        ${activity.role}
+                                    </span>
+                                ` : ''}
+                            </div>
+                            
+                            <p class="text-primary-600 dark:text-primary-400 text-sm font-semibold mb-2">${activity.organization}</p>
+                            
+                            <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-3">
+                                ${activity.date ? `<span class="flex items-center gap-1">📅 ${activity.date}</span>` : ''}
+                                ${activity.location ? `<span class="flex items-center gap-1">📍 ${activity.location}</span>` : ''}
+                            </div>
+                            
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-3">${activity.description}</p>
+                            
+                            ${activity.tags && activity.tags.length > 0 ? `
+                                <div class="flex flex-wrap gap-2">
+                                    ${activity.tags.map(tag => `
+                                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded text-xs">
+                                            ${tag}
+                                        </span>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    `).join('');
+                }
             }
 
+            // Populate Media
             if (mediaList && portfolioData.media) {
-                mediaList.innerHTML = portfolioData.media.map(media => `
-                    <div class="glass rounded-xl p-4 interactive-card">
-                        <h4 class="font-bold text-slate-800 dark:text-slate-100 mb-1">${media.title}</h4>
-                        <p class="text-green-600 dark:text-green-400 text-sm font-medium">${media.outlet}</p>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">${media.date}</p>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm mb-3">${media.description}</p>
-                        ${media.link ? `
-                            <a href="${media.link}" target="_blank" class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium text-sm">
-                                Read Article
-                                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                                </svg>
-                            </a>
-                        ` : ''}
-                    </div>
-                `).join('');
+                if (portfolioData.media.length === 0) {
+                    mediaList.innerHTML = `
+                        <div class="text-center py-8">
+                            <div class="text-slate-400 dark:text-slate-500">Media coverage coming soon...</div>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm mt-2">Sharing research insights with the world!</p>
+                        </div>
+                    `;
+                } else {
+                    mediaList.innerHTML = portfolioData.media.map(media => `
+                        <div class="glass rounded-xl p-6 interactive-card hover:shadow-lg transition-all-300">
+                            <div class="flex items-start justify-between mb-3">
+                                <h4 class="font-bold text-slate-800 dark:text-slate-100 leading-tight pr-4">${media.title}</h4>
+                                ${media.type ? `
+                                    <span class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-full text-xs font-medium whitespace-nowrap">
+                                        ${media.type}
+                                    </span>
+                                ` : ''}
+                            </div>
+                            
+                            <p class="text-green-600 dark:text-green-400 text-sm font-semibold mb-2">${media.outlet}</p>
+                            
+                            <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500 dark:text-slate-400 mb-3">
+                                ${media.date ? `<span class="flex items-center gap-1">📅 ${new Date(media.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</span>` : ''}
+                                ${media.location ? `<span class="flex items-center gap-1">📍 ${media.location}</span>` : ''}
+                            </div>
+                            
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">${media.description}</p>
+                            
+                            ${media.tags && media.tags.length > 0 ? `
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    ${media.tags.map(tag => `
+                                        <span class="px-2 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded text-xs">
+                                            ${tag}
+                                        </span>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                            
+                            ${media.link ? `
+                                <a href="${media.link}" target="_blank" class="inline-flex items-center gap-1 px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg text-sm font-medium hover:bg-green-200 dark:hover:bg-green-900/50 transition-colors">
+                                    📰 Read Article
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    </svg>
+                                </a>
+                            ` : ''}
+                        </div>
+                    `).join('');
+                }
             }
         }
 
@@ -1918,25 +2024,6 @@
             });
         }
 
-        function populateTalks() {
-            const talksList = document.getElementById('talks-list');
-            if (!talksList) return;
-            
-            const talks = portfolioData.talks || [];
-            if (talks.length === 0) {
-                talksList.innerHTML = '<div class="text-center py-8 text-slate-500">Talks coming soon...</div>';
-                return;
-            }
-            
-            talksList.innerHTML = talks.map(talk => `
-                <div class="glass rounded-xl p-6 interactive-card">
-                    <h3 class="text-lg font-bold mb-2">${talk.title}</h3>
-                    <p class="text-slate-600 dark:text-slate-300 text-sm mb-2">${talk.event}</p>
-                    <p class="text-slate-500 dark:text-slate-400 text-xs">${talk.date}</p>
-                </div>
-            `).join('');
-        }
-
         function populateImpact() {
             const metricsGrid = document.getElementById('metrics-grid');
             if (!metricsGrid) return;
@@ -1959,19 +2046,6 @@
                     <div class="text-sm text-slate-600">Projects</div>
                 </div>
             `;
-        }
-
-        function populateActivitiesAndMedia() {
-            const activitiesList = document.getElementById('activities-list');
-            const mediaList = document.getElementById('media-list');
-            
-            if (activitiesList) {
-                activitiesList.innerHTML = '<div class="text-slate-500">Activities coming soon...</div>';
-            }
-            
-            if (mediaList) {
-                mediaList.innerHTML = '<div class="text-slate-500">Media coverage coming soon...</div>';
-            }
         }
 
         function populateContact() {

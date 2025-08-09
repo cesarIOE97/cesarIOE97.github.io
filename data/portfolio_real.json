@@ -1,0 +1,271 @@
+{
+    "personalInfo": {
+        "name": "César Iván Olvera Espinosa",
+        "title": "Doctoral Researcher @ Aalto University",
+        "email": "cesar.olveraespinosa@aalto.fi",
+        "bio": "Doctoral researcher in Cloud & Network Computing at Aalto University. Focused on sustainable AI, carbon-aware computing, and energy-efficient software & systems.",
+        "longBio": "Doctor of Science (Tech.) candidate at Aalto University (School of Electrical Engineering), researching carbon-aware workload placement and energy-efficient AI inference. Background in communications engineering and hands-on experience with networked systems, benchmarking, and sustainability-focused projects.",
+        "affiliations": [
+            "Aalto University",
+            "Department of Information and Communications Engineering (DICE)",
+            "Cloud & Network Computing Research Group"
+        ],
+        "location": "Helsinki, Finland",
+        "cv": "assets/pdf/Cesar_Olvera_CV.pdf"
+    },
+    "contact": {
+        "email": "cesar.olveraespinosa@aalto.fi",
+        "website": "https://cesarioe97.github.io",
+        "phone": null
+    },
+    "links": {
+        "linkedin": "https://www.linkedin.com/in/cesar-olvera/",
+        "github": "https://github.com/cesarIOE97",
+        "googleScholar": "https://scholar.google.com/citations?user=example&user=iR7xVSYAAAAJ",
+        "orcid": "https://orcid.org/0009-0007-1136-3308",
+        "twitter": null
+    },
+    "languages": [
+        {
+            "language": "Spanish",
+            "level": "Native"
+        },
+        {
+            "language": "English",
+            "level": "Fluent"
+        }
+    ],
+    "researchInterests": [
+        "Cloud Computing",
+        "Sustainable AI",
+        "Green & Sustainable Computing",
+        "AI Inference Optimization",
+        "Software Energy Efficiency",
+        "Carbon-Aware Computing"
+    ],
+    "education": [
+        {
+            "degree": "Doctor of Science (Tech.) Candidate",
+            "institution": "Aalto University (School of Electrical Engineering)",
+            "location": "Finland",
+            "date": "2024–Present",
+            "major": null,
+            "track": null,
+            "thesis": null,
+            "supervisor": [
+                "Prof. Gopika Premsankar"
+            ],
+            "advisor": [
+                "Prof. Jukka Manner"
+            ],
+            "researchGroup": "Cloud & Network Computing"
+        },
+        {
+            "degree": "M.Sc. (Tech.) in Computer, Communications, and Information Sciences (CCIS)",
+            "institution": "Aalto University (School of Electrical Engineering)",
+            "location": "Finland",
+            "date": "2021–2023",
+            "major": "Communications Engineering",
+            "track": "Cloud and Network Services",
+            "thesis": "Evolving Trends in Software Performance and Energy Consumption: An Analysis of Compilers and Interpreters over Time",
+            "supervisor": [
+                "Prof. Jukka Manner"
+            ]
+        },
+        {
+            "degree": "B.Sc. in Communications and Electronics Engineering",
+            "institution": "Instituto Politécnico Nacional (ESIME), Mexico",
+            "location": "Mexico",
+            "date": "2015–2020",
+            "major": "Communications",
+            "honors": "Graduated with distinction"
+        },
+        {
+            "degree": "Student Exchange Program (1 semester)",
+            "institution": "Aalto University (School of Electrical Engineering)",
+            "location": "Finland",
+            "date": "Jan 2019–Jun 2019"
+        }
+    ],
+    "professionalExperience": [
+        {
+            "role": "Doctoral Researcher",
+            "organization": "Aalto University, Department of Information and Communications Engineering (DICE)",
+            "location": "Finland",
+            "date": "Jun 2024–Present",
+            "project": "Cloud and Network Computing",
+            "supervisor": [
+                "Prof. Gopika Premsankar"
+            ],
+            "advisor": [
+                "Prof. Jukka Manner"
+            ],
+            "highlights": [
+                "Research on carbon-aware workload placement and energy-efficient AI inference.",
+                "Benchmarking cloud/AI systems for performance, energy, and carbon metrics."
+            ]
+        },
+        {
+            "role": "Research Assistant",
+            "organization": "Aalto University, DICE",
+            "location": "Finland",
+            "date": "Feb 2023–Dec 2023",
+            "project": "ICT for Climate Actions",
+            "supervisor": [
+                "Prof. Jukka Manner"
+            ],
+            "highlights": [
+                "Analyzed trends in software performance and energy consumption."
+            ]
+        },
+        {
+            "role": "Research Assistant",
+            "organization": "Aalto University, DICE",
+            "location": "Finland",
+            "date": "Jun 2022–Aug 2022",
+            "supervisor": [
+                "Markus Peuhkuri"
+            ],
+            "highlights": [
+                "Developed teaching material on Big Data, network measurements, and ML for Internet Traffic Measurement and Analysis course."
+            ]
+        },
+        {
+            "role": "Technical Support Engineer",
+            "organization": "Ribbon Communications",
+            "location": "Mexico City, Mexico",
+            "date": "Mar 2021–Aug 2021",
+            "highlights": [
+                "Supported complex technical issues in customers’ live VoIP/TDM systems."
+            ]
+        },
+        {
+            "role": "Intern",
+            "organization": "Ribbon Communications",
+            "location": "Mexico City, Mexico",
+            "date": "Feb 2020–Feb 2021",
+            "highlights": [
+                "Software development and maintenance (webpages, databases, scripts).",
+                "Operation and maintenance of servers and telecom labs."
+            ]
+        },
+        {
+            "role": "Social Service",
+            "organization": "Instituto Politécnico Nacional",
+            "location": "Mexico City, Mexico",
+            "date": "Apr 2018–Sep 2018",
+            "highlights": [
+                "Planned and executed events for international students.",
+                "Managed exchange application and acceptance processes."
+            ]
+        }
+    ],
+    "teachingExperience": [
+        {
+            "course": "ELEC-E7230 Mobile Communications",
+            "institution": "Aalto University",
+            "term": "Fall 2023"
+        },
+        {
+            "course": "ELEC-E7120 Wireless Communications",
+            "institution": "Aalto University",
+            "term": "Fall 2022, Fall 2023"
+        },
+        {
+            "course": "ELEC-E7230 Internet Traffic Measurement and Analysis",
+            "institution": "Aalto University",
+            "term": "Fall 2022"
+        },
+        {
+            "course": "ELEC-E7315 Networking at Scale and Advanced Applications",
+            "institution": "Aalto University",
+            "term": "Spring 2025"
+        }
+    ],
+    "projects": [
+        {
+            "name": "ICT for Climate Actions",
+            "role": "Project member",
+            "funding": "Academy of Finland",
+            "amount": "€1.44M",
+            "period": "Feb 2021–Nov 2024",
+            "pi": "Prof. Jukka Manner",
+            "summary": "Research to reduce ICT’s climate impact via resource efficiency, optimized processes, remote meetings, and smart energy systems."
+        },
+        {
+            "name": "Information broadcasting using Visible Light Communication (VLC)",
+            "role": "Course project",
+            "period": "2022",
+            "link": "https://www.aalto.fi/en/news/aaltos-students-project-work-utilises-leds-and-smartphones-for-indoor-navigation"
+        }
+    ],
+    "awards": [
+        {
+            "name": "Finland Fellowship grant",
+            "organization": "Aalto University",
+            "period": "2024–2026"
+        },
+        {
+            "name": "Graduated by high GPA (B.Sc.)",
+            "organization": "Instituto Politécnico Nacional",
+            "date": "May 2021"
+        },
+        {
+            "name": "Student travel grant (Exchange Programme)",
+            "organization": "Instituto Politécnico Nacional",
+            "date": "Oct 2020"
+        },
+        {
+            "name": "Telmex Excellence Scholarship",
+            "organization": "Fundación Telmex",
+            "period": "2015–2020"
+        },
+        {
+            "name": "Scholarship Category A (Master’s programme)",
+            "organization": "Aalto University",
+            "period": "2021–2023"
+        }
+    ],
+    "activities": [
+        {
+            "name": "Pre-Badge Claim team",
+            "event": "Slush",
+            "location": "Helsinki, Finland",
+            "date": "2023"
+        },
+        {
+            "name": "AI Gaming Latinoamérica (Microsoft)",
+            "location": "Mexico City, Mexico",
+            "date": "2020"
+        },
+        {
+            "name": "Line Follower Robot – RO8OTIME",
+            "location": "Mexico City, Mexico",
+            "date": "2016"
+        },
+        {
+            "name": "Jalisco Talent Land",
+            "location": "Jalisco, Mexico",
+            "date": "2018, 2021"
+        },
+        {
+            "name": "Volunteer, Aalto-3 Student Satellite Project",
+            "location": "Aalto University",
+            "date": "2022"
+        },
+        {
+            "name": "ICT Tutor",
+            "organization": "INROADS de México",
+            "date": "Fall 2020"
+        }
+    ],
+    "media": [
+        {
+            "title": "Information Broadcasting using Visible Light Communication Technology",
+            "publisher": "Aalto University News",
+            "date": "Jun 2022",
+            "link": "https://www.aalto.fi/en/news/aaltos-students-project-work-utilises-leds-and-smartphones-for-indoor-navigation"
+        }
+    ],
+    "lastUpdated": "2025-08-09"
+}
