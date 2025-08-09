@@ -862,7 +862,7 @@
         async function loadData() {
             try {
                 // Load portfolio data (single source of truth)
-                const portfolioResponse = await fetch('data/portfolio.json');
+                const portfolioResponse = await fetch('data/portfolio_real.json');
                 if (!portfolioResponse.ok) {
                     throw new Error(`HTTP error! status: ${portfolioResponse.status}`);
                 }

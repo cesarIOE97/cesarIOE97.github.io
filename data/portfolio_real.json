@@ -182,6 +182,20 @@
             "term": "Spring 2025"
         }
     ],
+    "research_areas": [
+        {
+            "title": "Sustainable AI",
+            "description": "Research on energy-efficient artificial intelligence systems and carbon-aware computing."
+        },
+        {
+            "title": "Cloud Computing",
+            "description": "Focus on cloud systems optimization and sustainable computing practices."
+        },
+        {
+            "title": "Green Computing",
+            "description": "Development of environmentally conscious computing solutions and energy optimization."
+        }
+    ],
     "projects": [
         {
             "name": "ICT for Climate Actions",
@@ -228,44 +242,102 @@
     ],
     "activities": [
         {
-            "name": "Pre-Badge Claim team",
-            "event": "Slush",
+            "title": "Pre-Badge Claim team",
+            "organization": "Slush",
             "location": "Helsinki, Finland",
-            "date": "2023"
+            "date": "2023",
+            "role": "Team Member",
+            "description": "Participated in the Pre-Badge Claim team at Slush startup conference.",
+            "tags": [
+                "volunteer",
+                "startup",
+                "conference"
+            ]
         },
         {
-            "name": "AI Gaming Latinoamérica (Microsoft)",
+            "title": "AI Gaming Latinoamérica (Microsoft)",
+            "organization": "Microsoft",
             "location": "Mexico City, Mexico",
-            "date": "2020"
+            "date": "2020",
+            "role": "Participant",
+            "description": "Participated in AI Gaming event organized by Microsoft in Latin America.",
+            "tags": [
+                "ai",
+                "gaming",
+                "microsoft"
+            ]
         },
         {
-            "name": "Line Follower Robot – RO8OTIME",
+            "title": "Line Follower Robot – RO8OTIME",
+            "organization": "Competition",
             "location": "Mexico City, Mexico",
-            "date": "2016"
+            "date": "2016",
+            "role": "Team Member",
+            "description": "Developed and programmed line follower robot for robotics competition.",
+            "tags": [
+                "robotics",
+                "programming",
+                "competition"
+            ]
         },
         {
-            "name": "Jalisco Talent Land",
+            "title": "Jalisco Talent Land",
+            "organization": "Talent Land",
             "location": "Jalisco, Mexico",
-            "date": "2018, 2021"
+            "date": "2018, 2021",
+            "role": "Attendee",
+            "description": "Attended technology and innovation conference in Jalisco.",
+            "tags": [
+                "technology",
+                "innovation",
+                "conference"
+            ]
         },
         {
-            "name": "Volunteer, Aalto-3 Student Satellite Project",
+            "title": "Volunteer, Aalto-3 Student Satellite Project",
+            "organization": "Aalto University",
             "location": "Aalto University",
-            "date": "2022"
+            "date": "2022",
+            "role": "Volunteer",
+            "description": "Contributed as volunteer to the Aalto-3 student satellite project.",
+            "tags": [
+                "volunteer",
+                "satellite",
+                "space"
+            ]
         },
         {
-            "name": "ICT Tutor",
+            "title": "ICT Tutor",
             "organization": "INROADS de México",
-            "date": "Fall 2020"
+            "location": "Mexico",
+            "date": "Fall 2020",
+            "role": "Tutor",
+            "description": "Provided ICT tutoring services through INROADS de México program.",
+            "tags": [
+                "tutoring",
+                "ict",
+                "education"
+            ]
         }
     ],
     "media": [
         {
             "title": "Information Broadcasting using Visible Light Communication Technology",
-            "publisher": "Aalto University News",
+            "outlet": "Aalto University News",
             "date": "Jun 2022",
-            "link": "https://www.aalto.fi/en/news/aaltos-students-project-work-utilises-leds-and-smartphones-for-indoor-navigation"
+            "type": "Project Feature",
+            "location": "Espoo, Finland",
+            "link": "https://www.aalto.fi/en/news/aaltos-students-project-work-utilises-leds-and-smartphones-for-indoor-navigation",
+            "description": "Coverage of innovative indoor navigation project using LED technology and smartphone integration.",
+            "tags": [
+                "media",
+                "innovation",
+                "project"
+            ]
         }
     ],
+    "publications": [],
+    "talks": [],
+    "news": [],
     "lastUpdated": "2025-08-09"
 }
