@@ -191,6 +191,17 @@
                     "role": "Teaching Assistant"
                 }
             ]
+        },
+        {
+            "institution": "INROADS de México",
+            "location": "México",
+            "courses": [
+                {
+                    "title": "Information and Communication Technology Tutor",
+                    "period": "Fall 2020",
+                    "role": "Tutor"
+                }
+            ]
         }
     ],
     "awards": [
@@ -275,7 +286,7 @@
             "advisor": "Prof. Jukka Manner",
             "period": "Jun 2024–Present",
             "description": "Decarbonizing AI through Long-term Impact Assessment and Optimization",
-            "tags": ["sustainable-ai", "carbon-aware-computing", "cloud-computing"]
+            "tags": ["sustainable-ai", "carbon-aware-computing", "green-computing","cloud-computing", "contribution"]
         },
 
         {
@@ -287,7 +298,7 @@
             "period": "Feb 2021–Nov 2024",
             "pi": "Prof. Jukka Manner",
             "description": "Research to reduce ICT's climate impact in areas of infrastructure, digital services, and their consumption.",
-            "tags": ["climate", "ict", "sustainability", "green-computing"]
+            "tags": ["climate", "ict", "sustainability", "green-computing", "contribution"]
         },
         {
             "name": "Information broadcasting using Visible Light Communication (VLC)",
@@ -296,10 +307,23 @@
             "period": "2022",
             "link": "https://www.aalto.fi/en/news/aaltos-students-project-work-utilises-leds-and-smartphones-for-indoor-navigation",
             "description": "Innovative indoor navigation project using LED technology and smartphone integration.",
-            "tags": ["vlc", "navigation", "innovation", "led"]
+            "tags": ["vlc", "navigation", "innovation", "led", "own-project"]
         }
     ],
     "activities": [
+        {
+            "title": "ACACES 2025 Summer School",
+            "organization": "HiPEAC",
+            "location": "Fiuggi, Italy",
+            "date": "2025",
+            "role": "Participant",
+            "description": "Attended ACACES 2025 Summer School and presented the poster: 'Trends in Energy Consumption of Software: An Analysis of Compilers and Interpreters over Time'",
+            "tags": [
+                "summer-school",
+                "poster",
+                "conference"
+            ]
+        },
         {
             "title": "Pre-Badge Claim team",
             "organization": "Slush",
@@ -310,45 +334,6 @@
             "tags": [
                 "volunteer",
                 "startup",
-                "conference"
-            ]
-        },
-        {
-            "title": "AI Gaming Latinoamérica (Microsoft)",
-            "organization": "Microsoft",
-            "location": "Mexico City, Mexico",
-            "date": "2020",
-            "role": "Participant",
-            "description": "Participated in AI Gaming event organized by Microsoft in Latin America.",
-            "tags": [
-                "ai",
-                "gaming",
-                "microsoft"
-            ]
-        },
-        {
-            "title": "Line Follower Robot – RO8OTIME",
-            "organization": "Competition",
-            "location": "Mexico City, Mexico",
-            "date": "2016",
-            "role": "Team Member",
-            "description": "Developed and programmed line follower robot for robotics competition.",
-            "tags": [
-                "robotics",
-                "programming",
-                "competition"
-            ]
-        },
-        {
-            "title": "Jalisco Talent Land",
-            "organization": "Talent Land",
-            "location": "Jalisco, Mexico",
-            "date": "2018, 2021",
-            "role": "Attendee",
-            "description": "Attended technology and innovation conference in Jalisco.",
-            "tags": [
-                "technology",
-                "innovation",
                 "conference"
             ]
         },
@@ -366,6 +351,19 @@
             ]
         },
         {
+            "title": "AI Gaming Latinoamérica (Microsoft)",
+            "organization": "Microsoft",
+            "location": "Mexico City, Mexico",
+            "date": "2020",
+            "role": "Participant",
+            "description": "Participated in AI Gaming event organized by Microsoft in Latin America.",
+            "tags": [
+                "ai",
+                "gaming",
+                "microsoft"
+            ]
+        },
+        {
             "title": "ICT Tutor",
             "organization": "INROADS de México",
             "location": "Mexico",
@@ -377,13 +375,39 @@
                 "ict",
                 "education"
             ]
+        },
+        {
+            "title": "Jalisco Talent Land",
+            "organization": "Talent Land",
+            "location": "Jalisco, Mexico",
+            "date": "2018, 2021",
+            "role": "Attendee",
+            "description": "Attended technology and innovation conference in Jalisco.",
+            "tags": [
+                "technology",
+                "innovation",
+                "conference"
+            ]
+        },
+        {
+            "title": "Line Follower Robot – RO8OTIME",
+            "organization": "Instituto Politécnico Nacional",
+            "location": "Mexico City, Mexico",
+            "date": "2016",
+            "role": "Team Member",
+            "description": "Developed and programmed line follower robot for robotics competition.",
+            "tags": [
+                "robotics",
+                "programming",
+                "competition"
+            ]
         }
     ],
     "media": [
         {
             "title": "Information Broadcasting using Visible Light Communication Technology",
             "outlet": "Aalto University News",
-            "date": "Jun 2022",
+            "date": "6/14/2022",
             "type": "Project Feature",
             "location": "Espoo, Finland",
             "link": "https://www.aalto.fi/en/news/aaltos-students-project-work-utilises-leds-and-smartphones-for-indoor-navigation",
@@ -414,11 +438,12 @@
             "title": "Finland Fellowship Grant Awarded",
             "date": "12/2/2024",
             "description": "Funding for starting work on doctoral research project.",
-            "type": "Funding",
+            "type": "Award",
             "tags": [
                 "grant",
                 "funding",
-                "research"
+                "research",
+                "Award"
             ]
         }
     ],

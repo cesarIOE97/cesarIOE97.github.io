@@ -162,10 +162,7 @@ function populateResearchJourney() {
       // Populate research metrics
       populateResearchMetrics(data);
       
-      // Populate current research focus
-      populateCurrentResearch(data);
-      
-      // Populate research tools
+      // Only populate research tools (removed current research focus)
       populateResearchTools(data);
     })
     .catch(error => {
@@ -186,7 +183,7 @@ function populateResearchMetrics(data) {
     },
     {
       number: data.projects ? data.projects.length : 0,
-      label: 'Active Projects',
+      label: 'Projects & Contributions',
       icon: '🔬',
       color: 'from-green-500 to-green-600'
     },
@@ -215,36 +212,189 @@ function populateResearchMetrics(data) {
   `).join('');
 }
 
-function populateCurrentResearch(data) {
-  const currentResearch = document.getElementById('current-research');
-  if (!currentResearch || !data.research_areas) return;
-  
-  currentResearch.innerHTML = data.research_areas.slice(0, 3).map(area => `
-    <div class="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg border-l-4 border-green-500">
-      <h4 class="font-semibold text-slate-800 dark:text-white mb-2">${area.name}</h4>
-      <p class="text-sm text-slate-600 dark:text-slate-300">${area.description}</p>
-    </div>
-  `).join('');
-}
-
 function populateResearchTools(data) {
   const researchTools = document.getElementById('research-tools');
   if (!researchTools) return;
   
   const tools = [
-    { name: 'Machine Learning', icon: '🤖', description: 'TensorFlow, PyTorch, Scikit-learn' },
-    { name: 'Cloud Computing', icon: '☁️', description: 'Google Cloud Platform' },
-    { name: 'Data Analysis', icon: '📊', description: 'Python, Jupyter, Pandas' },
-    { name: 'Sustainability', icon: '🌱', description: 'CodeCarbon, RAPL tools' }
+    { 
+      name: 'Artificial Intelligence', 
+      icon: '🤖', 
+      description: 'TensorFlow, PyTorch, Scikit-learn, Hugging Face',
+      category: 'AI/ML/GenAI'
+    },
+    { 
+      name: 'Cloud Computing', 
+      icon: '☁️', 
+      description: 'Google Cloud Platform, Triton',
+      category: 'Infrastructure'
+    },
+    { 
+      name: 'Data Analysis', 
+      icon: '📊', 
+      description: 'Python, Jupyter, Pandas',
+      category: 'Analytics'
+    },
+    { 
+      name: 'Sustainability', 
+      icon: '🌱', 
+      description: 'CodeCarbon, Electricity Maps',
+      category: 'Environment'
+    },
+    { 
+      name: 'Research Methods', 
+      icon: '🔬', 
+      description: 'Experimental Design, Statistical Analysis',
+      category: 'Methodology'
+    },
+    { 
+      name: 'Visualization', 
+      icon: '📈', 
+      description: 'Matplotlib, Plotly',
+      category: 'Presentation'
+    }
   ];
   
   researchTools.innerHTML = tools.map(tool => `
-    <div class="p-4 bg-slate-50 dark:bg-slate-700/50 rounded-lg border-l-4 border-primary-500">
-      <div class="flex items-center mb-2">
-        <span class="text-lg mr-2">${tool.icon}</span>
-        <h4 class="font-semibold text-slate-800 dark:text-white">${tool.name}</h4>
+    <div class="group p-4 bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-cyan-300 dark:hover:border-cyan-600 transition-all duration-300 hover:shadow-md">
+      <div class="flex items-start space-x-3">
+        <div class="flex-shrink-0 w-8 h-8 bg-cyan-50 dark:bg-cyan-900/30 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <span class="text-sm">${tool.icon}</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between mb-1">
+            <h4 class="font-semibold text-slate-800 dark:text-white text-sm">${tool.name}</h4>
+            <span class="px-2 py-0.5 text-xs font-medium text-cyan-600 dark:text-cyan-400 bg-cyan-50 dark:bg-cyan-900/30 rounded-full">
+              ${tool.category}
+            </span>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">${tool.description}</p>
+        </div>
       </div>
-      <p class="text-sm text-slate-600 dark:text-slate-300">${tool.description}</p>
+    </div>
+  `).join('');
+}
+
+// Professional Activities and Media Coverage
+function populateActivitiesAndMedia() {
+  fetch('data/portfolio_real.json')
+    .then(response => response.json())
+    .then(data => {
+      populateActivities(data);
+      populateMedia(data);
+    })
+    .catch(error => {
+      console.error('Error loading activities and media data:', error);
+    });
+}
+
+function populateActivities(data) {
+  const activitiesList = document.getElementById('activities-list');
+  if (!activitiesList) return;
+  
+  if (!data.activities || data.activities.length === 0) {
+    activitiesList.innerHTML = `
+      <div class="text-center py-12 text-slate-500 dark:text-slate-400">
+        <div class="text-4xl mb-4">🤝</div>
+        <p class="text-lg font-medium mb-2">Activities Coming Soon</p>
+        <p class="text-sm">Expanding community engagement and professional activities</p>
+      </div>
+    `;
+    return;
+  }
+  
+  activitiesList.innerHTML = data.activities.map(activity => `
+    <div class="group bg-white dark:bg-slate-800 rounded-xl p-6 border border-slate-200 dark:border-slate-700 hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-300 hover:shadow-lg">
+      <div class="flex items-start justify-between mb-4">
+        <div class="flex-1">
+          <h4 class="text-lg font-semibold text-slate-800 dark:text-white mb-1">${activity.title}</h4>
+          <p class="text-primary-600 dark:text-primary-400 font-medium text-sm">${activity.organization}</p>
+        </div>
+        ${activity.role ? `
+          <span class="px-3 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-xs font-medium shrink-0">
+            ${activity.role}
+          </span>
+        ` : ''}
+      </div>
+      
+      <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400 mb-3">
+        ${activity.date ? `<span class="flex items-center gap-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg> ${activity.date}</span>` : ''}
+        ${activity.location ? `<span class="flex items-center gap-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg> ${activity.location}</span>` : ''}
+      </div>
+      
+      <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">${activity.description}</p>
+      
+      ${activity.tags && activity.tags.length > 0 ? `
+        <div class="flex flex-wrap gap-2">
+          ${activity.tags.slice(0, 3).map(tag => `
+            <span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-md text-xs">
+              ${tag}
+            </span>
+          `).join('')}
+          ${activity.tags.length > 3 ? `<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 rounded-md text-xs">+${activity.tags.length - 3} more</span>` : ''}
+        </div>
+      ` : ''}
+    </div>
+  `).join('');
+}
+
+function populateMedia(data) {
+  const mediaList = document.getElementById('media-list');
+  if (!mediaList) return;
+  
+  if (!data.media || data.media.length === 0) {
+    mediaList.innerHTML = `
+      <div class="text-center py-12 text-slate-500 dark:text-slate-400">
+        <div class="text-4xl mb-4">📰</div>
+        <p class="text-lg font-medium mb-2">Media Coverage Coming Soon</p>
+        <p class="text-sm">Sharing research insights with the world</p>
+      </div>
+    `;
+    return;
+  }
+  
+  // For minimal media items, use a more compact, highlighted design
+  mediaList.innerHTML = data.media.map(media => `
+    <div class="group bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-6 border border-green-200 dark:border-green-800 hover:border-green-300 dark:hover:border-green-600 transition-all duration-300 hover:shadow-lg">
+      <div class="flex items-start justify-between mb-4">
+        <div class="flex-1">
+          <h4 class="text-lg font-semibold text-slate-800 dark:text-white mb-1">${media.title}</h4>
+          <p class="text-green-600 dark:text-green-400 font-medium text-sm">${media.outlet}</p>
+        </div>
+        ${media.type ? `
+          <span class="px-3 py-1 bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300 rounded-full text-xs font-medium shrink-0">
+            ${media.type}
+          </span>
+        ` : ''}
+      </div>
+      
+      <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400 mb-3">
+        ${media.date ? `<span class="flex items-center gap-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg> ${new Date(media.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</span>` : ''}
+        ${media.location ? `<span class="flex items-center gap-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg> ${media.location}</span>` : ''}
+      </div>
+      
+      <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">${media.description}</p>
+      
+      <div class="flex items-center justify-between">
+        ${media.tags && media.tags.length > 0 ? `
+          <div class="flex flex-wrap gap-2">
+            ${media.tags.slice(0, 3).map(tag => `
+              <span class="px-2 py-1 bg-green-100 dark:bg-green-800/50 text-green-700 dark:text-green-300 rounded-md text-xs">
+                ${tag}
+              </span>
+            `).join('')}
+          </div>
+        ` : '<div></div>'}
+        
+        ${media.link ? `
+          <a href="${media.link}" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-medium transition-colors group">
+            Read Article
+            <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        ` : ''}
+      </div>
     </div>
   `).join('');
 }
