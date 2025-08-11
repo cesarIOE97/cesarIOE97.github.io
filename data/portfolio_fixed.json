@@ -1,7 +1,7 @@
 {
     "personalInfo": {
         "name": "César Iván Olvera Espinosa",
-        "title": "Doctoral Researcher @ Aalto University",
+        "title": "Doctoral Researcher @ Aalto University, Finland",
         "email": "cesar.olveraespinosa@aalto.fi",
         "bio": "Doctoral researcher in Cloud & Network Computing at Aalto University, Finland. Working on sustainable AI, carbon-aware computing, and energy-efficient software.",
         "longBio": "Doctor of Science (Tech.) candidate at Aalto University (School of Electrical Engineering), researching carbon-aware workload placement, energy-efficient AI inference, and green software engineering. Background in communications engineering, and hands-on experience with networked systems, benchmarking, and sustainability-focused projects.",
@@ -40,7 +40,7 @@
         "Sustainable AI",
         "Green & Sustainable Computing",
         "AI Inference Optimization",
-        "Green Software Engineering",
+        "Software Energy Efficiency",
         "Carbon-Aware Computing"
     ],
     "education": [
@@ -89,148 +89,134 @@
     ],
     "professionalExperience": [
         {
-            "organization": "Aalto University",
-            "department": "Department of Information and Communications Engineering (DICE)",
+            "position": "Doctoral Researcher",
+            "role": "Doctoral Researcher",
+            "organization": "Aalto University, Department of Information and Communications Engineering (DICE)",
             "location": "Finland",
-            "positions": [
-                {
-                    "title": "Doctoral Researcher",
-                    "date": "Jun 2024–Present",
-                    "project": "Project: Decarbonizing AI (DecAI)",
-                    "supervisor": ["Prof. Gopika Premsankar"],
-                    "advisor": ["Prof. Jukka Manner"],
-                    "highlights": [
-                        "Research on carbon-aware AI inference service placement for sustainable cloud computing"
-                    ]
-                },
-                {
-                    "title": "Research Assistant",
-                    "date": "Feb 2023–Dec 2023",
-                    "project": "Project: ICT for Climate Actions",
-                    "supervisor": ["Prof. Jukka Manner"],
-                    "highlights": [
-                        "Analyzed trends in software performance and energy consumption"
-                    ]
-                },
-                {
-                    "title": "Research Assistant",
-                    "date": "Jun 2022–Aug 2022",
-                    "project": "Project: Internet Traffic Measurement and Analysis",
-                    "supervisor": ["Markus Peuhkuri"],
-                    "highlights": [
-                        "Developed teaching material on Big Data, network measurements, and ML for Internet Traffic Measurement and Analysis course"
-                    ]
-                }
+            "date": "Jun 2024–Present",
+            "project": "Cloud and Network Computing",
+            "supervisor": [
+                "Prof. Gopika Premsankar"
+            ],
+            "advisor": [
+                "Prof. Jukka Manner"
+            ],
+            "highlights": [
+                "Research on carbon-aware workload placement and energy-efficient AI inference.",
+                "Benchmarking cloud/AI systems for performance, energy, and carbon metrics."
             ]
         },
         {
+            "position": "Research Assistant",
+            "role": "Research Assistant",
+            "organization": "Aalto University, DICE",
+            "location": "Finland",
+            "date": "Feb 2023–Dec 2023",
+            "project": "ICT for Climate Actions",
+            "supervisor": [
+                "Prof. Jukka Manner"
+            ],
+            "highlights": [
+                "Analyzed trends in software performance and energy consumption."
+            ]
+        },
+        {
+            "position": "Research Assistant",
+            "role": "Research Assistant",
+            "organization": "Aalto University, DICE",
+            "location": "Finland",
+            "date": "Jun 2022–Aug 2022",
+            "supervisor": [
+                "Markus Peuhkuri"
+            ],
+            "highlights": [
+                "Developed teaching material on Big Data, network measurements, and ML for Internet Traffic Measurement and Analysis course."
+            ]
+        },
+        {
+            "position": "Technical Support Engineer",
+            "role": "Technical Support Engineer",
             "organization": "Ribbon Communications",
             "location": "Mexico City, Mexico",
-            "positions": [
-                {
-                    "title": "Technical Support Engineer",
-                    "date": "Mar 2021–Aug 2021",
-                    "project": "Team: Ribbon Technical Support Mexico",
-                    "supervisor": ["David Ortiz"],
-                    "highlights": [
-                        "Supported complex technical issues in customers' live VoIP/TDM systems"
-                    ]
-                },
-                {
-                    "title": "Intern",
-                    "date": "Feb 2020–Feb 2021",
-                    "project": "Program: INROADS de México",
-                    "supervisor": ["David Ortiz"],
-                    "highlights": [
-                        "Software development and maintenance (webpages, databases, scripts)",
-                        "Operation and maintenance of servers and telecom labs"
-                    ]
-                }
+            "date": "Mar 2021–Aug 2021",
+            "highlights": [
+                "Supported complex technical issues in customers' live VoIP/TDM systems."
             ]
         },
         {
+            "position": "Intern",
+            "role": "Intern",
+            "organization": "Ribbon Communications",
+            "location": "Mexico City, Mexico",
+            "date": "Feb 2020–Feb 2021",
+            "highlights": [
+                "Software development and maintenance (webpages, databases, scripts).",
+                "Operation and maintenance of servers and telecom labs."
+            ]
+        },
+        {
+            "position": "Social Service",
+            "role": "Social Service",
             "organization": "Instituto Politécnico Nacional",
             "location": "Mexico City, Mexico",
-            "positions": [
-                {
-                    "title": "Social Service",
-                    "date": "Apr 2018–Sep 2018",
-                    "project": "Department of International Relations",
-                    "supervisor": ["Tomás David Contreras Martínez"],
-                    "highlights": [
-                        "Planned and executed events for international students",
-                        "Managed exchange application and acceptance processes"
-                    ]
-                }
+            "date": "Apr 2018–Sep 2018",
+            "highlights": [
+                "Planned and executed events for international students.",
+                "Managed exchange application and acceptance processes."
             ]
         }
     ],
     "teachingExperience": [
         {
+            "course": "ELEC-E7230 Mobile Communications",
             "institution": "Aalto University",
-            "location": "Finland",
-            "courses": [
-                {
-                    "title": "ELEC-E7315 Networking at Scale and Advanced Applications",
-                    "period": "Spring 2025",
-                    "role": "Teaching Assistant"
-                },
-                {
-                    "title": "ELEC-E7230 Mobile Communications",
-                    "period": "Fall 2023",
-                    "role": "Teaching Assistant"
-                },
-                {
-                    "title": "ELEC-E7120 Wireless Communications", 
-                    "period": "Fall 2022, Fall 2023",
-                    "role": "Teaching Assistant"
-                },
-                {
-                    "title": "ELEC-E7230 Internet Traffic Measurement and Analysis",
-                    "period": "Fall 2022",
-                    "role": "Teaching Assistant"
-                }
-            ]
+            "period": "Fall 2023",
+            "role": "Teaching Assistant"
+        },
+        {
+            "course": "ELEC-E7120 Wireless Communications",
+            "institution": "Aalto University",
+            "period": "Fall 2022, Fall 2023",
+            "role": "Teaching Assistant"
+        },
+        {
+            "course": "ELEC-E7230 Internet Traffic Measurement and Analysis",
+            "institution": "Aalto University",
+            "period": "Fall 2022",
+            "role": "Teaching Assistant"
+        },
+        {
+            "course": "ELEC-E7315 Networking at Scale and Advanced Applications",
+            "institution": "Aalto University",
+            "period": "Spring 2025",
+            "role": "Teaching Assistant"
         }
     ],
     "awards": [
         {
+            "title": "Finland Fellowship grant",
             "institution": "Aalto University",
-            "location": "Finland", 
-            "honors": [
-                {
-                    "title": "Finland Fellowship Grant",
-                    "date": "2024–2026"
-                },
-                {
-                    "title": "Scholarship Category A (Master's Programme)",
-                    "date": "2021–2023"
-                }
-            ]
+            "date": "2024–2026"
         },
         {
+            "title": "Scholarship Category A (Master's programme)",
+            "institution": "Aalto University",
+            "date": "2021–2023"
+        },
+        {
+            "title": "High GPA Graduation (B.Sc.)",
             "institution": "Instituto Politécnico Nacional",
-            "location": "Mexico",
-            "honors": [
-                {
-                    "title": "High GPA Graduation (B.Sc.)",
-                    "date": "Jun 2021"
-                },
-                {
-                    "title": "Student Travel Grant (Exchange Programme)",
-                    "date": "Oct 2020"
-                }
-            ]
+            "date": "Jun 2021"
         },
         {
+            "title": "Student travel grant (Exchange Programme)",
+            "institution": "Instituto Politécnico Nacional",
+            "date": "Oct 2020"
+        },
+        {
+            "title": "Telmex Excellence Scholarship",
             "institution": "Fundación Telmex",
-            "location": "Mexico",
-            "honors": [
-                {
-                    "title": "Telmex Excellence Scholarship",
-                    "date": "2015–2020"
-                }
-            ]
+            "date": "2015–2020"
         }
     ],
     "research_areas": [
@@ -268,17 +254,6 @@
     ],
     "projects": [
         {
-            "name": "Decarbonizing AI (DecAI)",
-            "title": "Decarbonizing AI (DecAI)",
-            "role": "Doctoral Researcher",
-            "supervisor": "Prof. Gopika Premsankar",
-            "advisor": "Prof. Jukka Manner",
-            "period": "Jun 2024–Present",
-            "description": "Decarbonizing AI through Long-term Impact Assessment and Optimization",
-            "tags": ["sustainable-ai", "carbon-aware-computing", "cloud-computing"]
-        },
-
-        {
             "name": "ICT for Climate Actions",
             "title": "ICT for Climate Actions",
             "role": "Project member",
@@ -286,7 +261,7 @@
             "amount": "€1.44M",
             "period": "Feb 2021–Nov 2024",
             "pi": "Prof. Jukka Manner",
-            "description": "Research to reduce ICT's climate impact in areas of infrastructure, digital services, and their consumption.",
+            "summary": "Research to reduce ICT's climate impact via resource efficiency, optimized processes, remote meetings, and smart energy systems.",
             "tags": ["climate", "ict", "sustainability", "green-computing"]
         },
         {
@@ -295,7 +270,7 @@
             "role": "Course project",
             "period": "2022",
             "link": "https://www.aalto.fi/en/news/aaltos-students-project-work-utilises-leds-and-smartphones-for-indoor-navigation",
-            "description": "Innovative indoor navigation project using LED technology and smartphone integration.",
+            "summary": "Innovative indoor navigation project using LED technology and smartphone integration.",
             "tags": ["vlc", "navigation", "innovation", "led"]
         }
     ],
@@ -400,7 +375,7 @@
     "news": [
         {
             "title": "Poster Presentation - ACACES 2025 Summer School",
-            "date": "6/18/2025",
+            "date": "Jun 2025",
             "description": "Attended ACACES 2025 organized by HiPEAC and presented the poster: 'Trends in Energy Consumption of Software: An Analysis of Compilers and Interpreters over Time'",
             "type": [
                 "Summer School"
@@ -412,13 +387,24 @@
         },
         {
             "title": "Finland Fellowship Grant Awarded",
-            "date": "12/2/2024",
+            "date": "December 2024",
             "description": "Funding for starting work on doctoral research project.",
             "type": "Funding",
             "tags": [
                 "grant",
                 "funding",
                 "research"
+            ]
+        },
+        {
+            "title": "Selected for Sustainable Computing Fellowship Program",
+            "date": "January 2024",
+            "description": "Chosen as one of 10 global fellows in the inaugural Sustainable Computing Fellowship Program.",
+            "type": "Fellowship",
+            "tags": [
+                "fellowship",
+                "selection",
+                "global"
             ]
         }
     ],

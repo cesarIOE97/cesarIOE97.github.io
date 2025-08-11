@@ -223,6 +223,179 @@
             transform: translateX(4px);
             box-shadow: 0 8px 16px rgba(34, 211, 238, 0.1);
         }
+        
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 240px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 0.5rem;
+            margin-top: 0.25rem;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .dark .dropdown-content {
+            background: rgba(15, 23, 42, 0.98);
+            border-color: rgba(51, 65, 85, 0.6);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Delay hiding the dropdown to make it more stable */
+        .dropdown-content:hover {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Add a bridge to prevent dropdown from disappearing */
+        .dropdown::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 0.25rem;
+            background: transparent;
+            z-index: 999;
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: rgb(71, 85, 105);
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0.5rem;
+            margin: 0.125rem;
+            white-space: nowrap;
+            font-size: 0.875rem;
+            font-weight: 500;
+            position: relative;
+            border-left: 3px solid transparent;
+        }
+        
+        .dark .dropdown-item {
+            color: rgb(203, 213, 225);
+        }
+        
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(34, 197, 94, 0.08));
+            color: rgb(59, 130, 246);
+            border-left-color: rgb(59, 130, 246);
+            transform: translateX(4px);
+        }
+        
+        .dark .dropdown-item:hover {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(34, 197, 94, 0.15));
+            color: rgb(147, 197, 253);
+            border-left-color: rgb(147, 197, 253);
+        }
+        
+        .dropdown-trigger {
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        
+        .dropdown-trigger:hover {
+            color: rgb(59, 130, 246);
+        }
+        
+        .dark .dropdown-trigger:hover {
+            color: rgb(147, 197, 253);
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile dropdown adjustments - Optimized for smooth performance */
+        @media (max-width: 768px) {
+            .mobile-dropdown {
+                display: block;
+                padding-left: 1rem;
+                margin-top: 0.5rem;
+                border-left: 2px solid rgba(34, 211, 238, 0.3);
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                /* Optimized transitions for mobile performance */
+                transition: max-height 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                           opacity 0.1s ease-out;
+                /* Use transform for better performance */
+                transform: translateY(-5px);
+                will-change: transform, opacity, max-height;
+                /* Hardware acceleration for smoother animations */
+                backface-visibility: hidden;
+                perspective: 1000px;
+            }
+            
+            .mobile-dropdown.show {
+                max-height: 300px;
+                opacity: 1;
+                padding-bottom: 0.5rem;
+                transform: translateY(0);
+                transition: max-height 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                           opacity 0.15s ease-out,
+                           transform 0.15s ease-out;
+            }
+            
+            .mobile-dropdown .dropdown-item {
+                padding: 0.5rem 0.75rem;
+                margin: 0.125rem 0;
+                border-radius: 0.25rem;
+                font-size: 0.9rem;
+                /* Smooth item transitions */
+                transition: all 0.1s ease-out;
+                transform: translateZ(0); /* Force hardware acceleration */
+            }
+            
+            .mobile-dropdown .dropdown-item:hover,
+            .mobile-dropdown .dropdown-item:active {
+                background: rgba(34, 211, 238, 0.1);
+                color: rgb(34, 211, 238);
+                transform: translateX(2px) translateZ(0);
+            }
+            
+            /* Improve touch responsiveness */
+            .mobile-dropdown .dropdown-item:active {
+                transform: translateX(2px) translateZ(0) scale(0.98);
+            }
+            
+            /* Arrow rotation optimization */
+            .dropdown-arrow {
+                transition: transform 0.12s ease-out;
+                transform-origin: center;
+                will-change: transform;
+            }
+        }
     </style>
 </head>
 
@@ -242,13 +415,32 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="#about" class="nav-link">About</a>
-                    <a href="#research" class="nav-link">Research</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#experience" class="nav-link">Experience</a>
-                    <a href="#publications" class="nav-link">Publications</a>
-                    <a href="#talks" class="nav-link">Talks</a>
-                    <a href="#impact" class="nav-link">Impact</a>
-                    <a href="#activities" class="nav-link">Activities</a>
+                    
+                    <!-- Research Dropdown -->
+                    <div class="dropdown">
+                        <a href="#research" class="nav-link dropdown-trigger">
+                            Research
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#research" class="dropdown-item">Research Areas</a>
+                            <a href="#projects" class="dropdown-item">Projects</a>
+                            <a href="#publications" class="dropdown-item">Publications</a>
+                            <a href="#talks" class="dropdown-item">Talks</a>
+                            <a href="#impact" class="dropdown-item">Research Journey</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Experience Dropdown -->
+                    <div class="dropdown">
+                        <a href="#experience" class="nav-link dropdown-trigger">
+                            Experience
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#experience" class="dropdown-item">Professional</a>
+                            <a href="#activities" class="dropdown-item">Activities & Media</a>
+                        </div>
+                    </div>
+                    
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
                 
@@ -273,13 +465,32 @@
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 glass rounded-lg p-4">
                 <a href="#about" class="block py-2 nav-link">About</a>
-                <a href="#research" class="block py-2 nav-link">Research</a>
-                <a href="#projects" class="block py-2 nav-link">Projects</a>
-                <a href="#experience" class="block py-2 nav-link">Experience</a>
-                <a href="#publications" class="block py-2 nav-link">Publications</a>
-                <a href="#talks" class="block py-2 nav-link">Talks</a>
-                <a href="#impact" class="block py-2 nav-link">Impact</a>
-                <a href="#activities" class="block py-2 nav-link">Activities</a>
+                
+                <!-- Research Mobile Dropdown -->
+                <div>
+                    <button onclick="toggleMobileDropdown('research-mobile')" class="flex items-center justify-between w-full py-2 nav-link text-left">
+                        Research <span class="dropdown-arrow">↓</span>
+                    </button>
+                    <div id="research-mobile" class="mobile-dropdown">
+                        <a href="#research" class="block py-1 dropdown-item">Research Areas</a>
+                        <a href="#projects" class="block py-1 dropdown-item">Projects</a>
+                        <a href="#publications" class="block py-1 dropdown-item">Publications</a>
+                        <a href="#talks" class="block py-1 dropdown-item">Talks</a>
+                        <a href="#impact" class="block py-1 dropdown-item">Research Journey</a>
+                    </div>
+                </div>
+                
+                <!-- Experience Mobile Dropdown -->
+                <div>
+                    <button onclick="toggleMobileDropdown('experience-mobile')" class="flex items-center justify-between w-full py-2 nav-link text-left">
+                        Experience <span class="dropdown-arrow">↓</span>
+                    </button>
+                    <div id="experience-mobile" class="mobile-dropdown">
+                        <a href="#experience" class="block py-1 dropdown-item">Professional</a>
+                        <a href="#activities" class="block py-1 dropdown-item">Activities & Media</a>
+                    </div>
+                </div>
+                
                 <a href="#contact" class="block py-2 nav-link">Contact</a>
             </div>
         </div>
@@ -347,14 +558,14 @@
                     About Me
                 </h2>
                 <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-                    Passionate about creating sustainable and efficient AI systems for a greener future
+                    Passionate about developing sustainable, efficient AI and cloud computing systems for a greener future
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <div class="glass rounded-2xl p-8 interactive-card">
-                        <h3 class="text-2xl font-bold mb-4 text-primary-600 dark:text-primary-400">My Mission</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-primary-600 dark:text-primary-400">👨🏻‍💻 Research Focus</h3>
                         <p id="about-bio" class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
                             <!-- Will be populated by JavaScript -->
                         </p>
@@ -386,8 +597,8 @@
                 
                 <div class="space-y-6">
                     <!-- Education -->
-                    <div class="glass rounded-2xl p-6 interactive-card">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <div class="glass rounded-2xl p-8 interactive-card">
+                        <h3 class="text-2xl font-bold mb-4 text-primary-600 dark:text-primary-400 flex items-center">
                             🎓 <span class="ml-2">Education</span>
                         </h3>
                         <div id="education-list" class="space-y-4">
@@ -396,8 +607,8 @@
                     </div>
                     
                     <!-- Languages -->
-                    <div class="glass rounded-2xl p-6 interactive-card">
-                        <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <div class="glass rounded-2xl p-8 interactive-card">
+                        <h3 class="text-2xl font-bold mb-4 text-primary-600 dark:text-primary-400 flex items-center">
                             🌐 <span class="ml-2">Languages</span>
                         </h3>
                         <div id="languages-list" class="flex flex-wrap gap-3">
@@ -434,68 +645,6 @@
             
             <div id="research-areas" class="grid md:grid-cols-3 gap-8">
                 <!-- Will be populated by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 relative bg-slate-50/50 dark:bg-slate-900/50">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary-600 to-green-600 bg-clip-text text-transparent">
-                    Professional Experience
-                </h2>
-                <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-                    Building expertise through research, teaching, and industry collaboration
-                </p>
-            </div>
-            
-            <!-- Filter buttons for experience sections -->
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <button onclick="filterExperience('all')" class="filter-btn active px-6 py-2 rounded-full border-2 border-primary-300 text-primary-700 dark:text-primary-300 font-medium transition-all-300 hover:bg-primary-100 dark:hover:bg-primary-900/30">
-                    All Experience
-                </button>
-                <button onclick="filterExperience('professional')" class="filter-btn px-6 py-2 rounded-full border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-medium transition-all-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                    Professional
-                </button>
-                <button onclick="filterExperience('teaching')" class="filter-btn px-6 py-2 rounded-full border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-medium transition-all-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                    Teaching
-                </button>
-                <button onclick="filterExperience('awards')" class="filter-btn px-6 py-2 rounded-full border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-medium transition-all-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                    Awards
-                </button>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Professional Experience -->
-                <div class="experience-category" data-category="professional">
-                    <h3 class="text-2xl font-bold mb-6 text-primary-600 dark:text-primary-400 flex items-center">
-                        💼 <span class="ml-2">Professional</span>
-                    </h3>
-                    <div id="professional-experience" class="space-y-6">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-                </div>
-                
-                <!-- Teaching Experience -->
-                <div class="experience-category" data-category="teaching">
-                    <h3 class="text-2xl font-bold mb-6 text-green-600 dark:text-green-400 flex items-center">
-                        🎓 <span class="ml-2">Teaching</span>
-                    </h3>
-                    <div id="teaching-experience" class="space-y-6">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-                </div>
-                
-                <!-- Awards & Honors -->
-                <div class="experience-category" data-category="awards">
-                    <h3 class="text-2xl font-bold mb-6 text-amber-600 dark:text-amber-400 flex items-center">
-                        🏆 <span class="ml-2">Awards & Honors</span>
-                    </h3>
-                    <div id="awards-list" class="space-y-6">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -709,6 +858,68 @@
                         <p class="text-slate-600 dark:text-slate-300 text-sm">
                             Building open-source tools and sharing knowledge to amplify positive environmental impact
                         </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative bg-slate-50/50 dark:bg-slate-900/50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary-600 to-green-600 bg-clip-text text-transparent">
+                    Professional Experience
+                </h2>
+                <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                    Building expertise through research, teaching, and industry collaboration
+                </p>
+            </div>
+            
+            <!-- Filter buttons for experience sections -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterExperience('all')" class="filter-btn active px-6 py-2 rounded-full border-2 border-primary-300 text-primary-700 dark:text-primary-300 font-medium transition-all-300 hover:bg-primary-100 dark:hover:bg-primary-900/30">
+                    All Experience
+                </button>
+                <button onclick="filterExperience('professional')" class="filter-btn px-6 py-2 rounded-full border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-medium transition-all-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                    Professional
+                </button>
+                <button onclick="filterExperience('teaching')" class="filter-btn px-6 py-2 rounded-full border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-medium transition-all-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                    Teaching
+                </button>
+                <button onclick="filterExperience('awards')" class="filter-btn px-6 py-2 rounded-full border-2 border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-medium transition-all-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                    Awards
+                </button>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Professional Experience -->
+                <div class="experience-category" data-category="professional">
+                    <h3 class="text-2xl font-bold mb-6 text-primary-600 dark:text-primary-400 flex items-center">
+                        💼 <span class="ml-2">Professional</span>
+                    </h3>
+                    <div id="professional-experience" class="space-y-6">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Teaching Experience -->
+                <div class="experience-category" data-category="teaching">
+                    <h3 class="text-2xl font-bold mb-6 text-green-600 dark:text-green-400 flex items-center">
+                        🎓 <span class="ml-2">Teaching</span>
+                    </h3>
+                    <div id="teaching-experience" class="space-y-6">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Awards & Honors -->
+                <div class="experience-category" data-category="awards">
+                    <h3 class="text-2xl font-bold mb-6 text-amber-600 dark:text-amber-400 flex items-center">
+                        🏆 <span class="ml-2">Awards & Honors</span>
+                    </h3>
+                    <div id="awards-list" class="space-y-6">
+                        <!-- Will be populated by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -1017,11 +1228,19 @@
 
             // Current position
             if (currentPosition) {
-                const position = portfolioData.professionalExperience?.[0] || {};
-                currentPosition.innerHTML = `
-                    <div class="font-medium">${position.position || portfolioData.personalInfo?.title}</div>
-                    <div class="text-sm text-slate-500 dark:text-slate-400">${position.date || '2024-Present'}</div>
-                `;
+                const currentOrg = portfolioData.professionalExperience?.[0];
+                const currentPos = currentOrg?.positions?.[0];
+                if (currentPos) {
+                    currentPosition.innerHTML = `
+                        <div class="font-medium">${currentPos.title}</div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400">${currentPos.date}</div>
+                    `;
+                } else {
+                    currentPosition.innerHTML = `
+                        <div class="font-medium">${portfolioData.personalInfo?.title}</div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400">2024-Present</div>
+                    `;
+                }
             }
 
             // Affiliations
@@ -1039,10 +1258,14 @@
             // Education
             if (educationList && portfolioData.education) {
                 educationList.innerHTML = portfolioData.education.map(edu => `
-                    <div class="border-l-2 border-primary-200 dark:border-primary-700 pl-4">
-                        <div class="font-medium text-sm">${edu.degree}</div>
-                        <div class="text-primary-600 dark:text-primary-400 text-sm">${edu.institution}</div>
-                        <div class="text-xs text-slate-500 dark:text-slate-400">${edu.date}</div>
+                    <div class="border-b border-slate-200 dark:border-slate-700 pb-3 mb-3 last:border-b-0 last:pb-0 last:mb-0">
+                        <div class="flex justify-between items-start mb-1">
+                            <h4 class="font-medium text-slate-800 dark:text-slate-100 text-sm leading-tight">${edu.degree}</h4>
+                            <span class="text-xs text-slate-500 dark:text-slate-400 ml-2 flex-shrink-0">${edu.date}</span>
+                        </div>
+                        <p class="text-primary-600 dark:text-primary-400 text-xs font-medium">${edu.institution}</p>
+                        ${edu.major ? `<p class="text-xs text-slate-600 dark:text-slate-300 mt-1">${edu.major}</p>` : ''}
+                        ${edu.honors ? `<span class="inline-block mt-1 text-xs text-amber-600 dark:text-amber-400 font-medium">⭐ ${edu.honors}</span>` : ''}
                     </div>
                 `).join('');
             }
@@ -1106,12 +1329,25 @@
             // Professional Experience
             const professionalExperience = document.getElementById('professional-experience');
             if (professionalExperience && portfolioData.professionalExperience) {
-                professionalExperience.innerHTML = portfolioData.professionalExperience.map(exp => `
-                    <div class="glass rounded-xl p-4 interactive-card">
-                        <h4 class="font-bold text-slate-800 dark:text-slate-100">${exp.position}</h4>
-                        <p class="text-primary-600 dark:text-primary-400 text-sm font-medium">${exp.company}</p>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">${exp.date}</p>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm">${exp.description}</p>
+                professionalExperience.innerHTML = portfolioData.professionalExperience.map(org => `
+                    <div class="glass rounded-xl p-4 md:p-5 interactive-card mb-4">
+                        <div class="border-b border-slate-200 dark:border-slate-700 pb-2 mb-3">
+                            <h3 class="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100">${org.organization}</h3>
+                            ${org.department ? `<p class="text-xs md:text-sm text-slate-600 dark:text-slate-400">${org.department}</p>` : ''}
+                            <p class="text-xs md:text-sm text-slate-500 dark:text-slate-500">${org.location}</p>
+                        </div>
+                        <div class="space-y-3">
+                            ${org.positions.map(pos => `
+                                <div class="relative pl-3 border-l-2 border-primary-200 dark:border-primary-800">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-sm">${pos.title}</h4>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-full flex-shrink-0 ml-2">${pos.date}</span>
+                                    </div>
+                                    ${pos.project ? `<p class="text-xs text-primary-600 dark:text-primary-400 mb-1">${pos.project}</p>` : ''}
+                                    ${pos.supervisor ? `<p class="text-xs text-slate-500 dark:text-slate-400 mb-1">Supervisor: ${pos.supervisor.join(', ')}</p>` : ''}
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                 `).join('');
             }
@@ -1119,12 +1355,23 @@
             // Teaching Experience
             const teachingExperience = document.getElementById('teaching-experience');
             if (teachingExperience && portfolioData.teachingExperience) {
-                teachingExperience.innerHTML = portfolioData.teachingExperience.map(exp => `
-                    <div class="glass rounded-xl p-4 interactive-card">
-                        <h4 class="font-bold text-slate-800 dark:text-slate-100">${exp.course}</h4>
-                        <p class="text-green-600 dark:text-green-400 text-sm font-medium">${exp.role}</p>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">${exp.period}</p>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm">${exp.description}</p>
+                teachingExperience.innerHTML = portfolioData.teachingExperience.map(inst => `
+                    <div class="glass rounded-xl p-4 md:p-5 interactive-card mb-4">
+                        <div class="border-b border-slate-200 dark:border-slate-700 pb-2 mb-3">
+                            <h3 class="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100">${inst.institution}</h3>
+                            <p class="text-xs md:text-sm text-slate-500 dark:text-slate-500">${inst.location}</p>
+                        </div>
+                        <div class="space-y-2">
+                            ${inst.courses.map(course => `
+                                <div class="relative pl-3 border-l-2 border-green-200 dark:border-green-800">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xs md:text-sm">${course.title}</h4>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-full flex-shrink-0 ml-2">${course.period}</span>
+                                    </div>
+                                    <p class="text-xs text-green-600 dark:text-green-400">${course.role}</p>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                 `).join('');
             }
@@ -1132,12 +1379,22 @@
             // Awards
             const awardsList = document.getElementById('awards-list');
             if (awardsList && portfolioData.awards) {
-                awardsList.innerHTML = portfolioData.awards.map(award => `
-                    <div class="glass rounded-xl p-4 interactive-card">
-                        <h4 class="font-bold text-slate-800 dark:text-slate-100">${award.title}</h4>
-                        <p class="text-amber-600 dark:text-amber-400 text-sm font-medium">${award.institution}</p>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">${award.date}</p>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm">${award.description}</p>
+                awardsList.innerHTML = portfolioData.awards.map(inst => `
+                    <div class="glass rounded-xl p-4 md:p-5 interactive-card mb-4">
+                        <div class="border-b border-slate-200 dark:border-slate-700 pb-2 mb-3">
+                            <h3 class="text-base md:text-lg font-bold text-slate-800 dark:text-slate-100">${inst.institution}</h3>
+                            <p class="text-xs md:text-sm text-slate-500 dark:text-slate-500">${inst.location}</p>
+                        </div>
+                        <div class="space-y-2">
+                            ${inst.honors.map(honor => `
+                                <div class="relative pl-3 border-l-2 border-amber-200 dark:border-amber-800">
+                                    <div class="flex justify-between items-start">
+                                        <h4 class="font-semibold text-slate-800 dark:text-slate-100 text-xs md:text-sm">${honor.title}</h4>
+                                        <span class="text-xs text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded-full flex-shrink-0 ml-2">${honor.date}</span>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
                 `).join('');
             }
@@ -1222,7 +1479,7 @@
                 publicationsList.innerHTML = `
                     <div class="text-center py-12">
                         <div class="text-slate-400 dark:text-slate-500 text-lg">Publications coming soon...</div>
-                        <p class="text-slate-500 dark:text-slate-400 mt-2">Currently working on exciting research papers!</p>
+                        <p class="text-slate-500 dark:text-slate-400 mt-2">Currently working on research papers!</p>
                     </div>
                 `;
                 return;
@@ -1290,7 +1547,7 @@
                 talksList.innerHTML = `
                     <div class="col-span-full text-center py-12">
                         <div class="text-slate-400 dark:text-slate-500 text-lg">Talks coming soon...</div>
-                        <p class="text-slate-500 dark:text-slate-400 mt-2">Preparing exciting presentations on sustainable AI!</p>
+                        <p class="text-slate-500 dark:text-slate-400 mt-2">Preparing presentations on sustainable AI!</p>
                     </div>
                 `;
                 return;
@@ -1989,13 +2246,74 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // Close mobile menu when clicking on a link
+            // Close mobile menu when clicking on a direct link (not dropdown buttons)
             mobileMenu?.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
+                // Only close menu for direct navigation links, not dropdown items
+                if (!link.classList.contains('dropdown-item')) {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        // Also close any open dropdowns
+                        document.querySelectorAll('.mobile-dropdown.show').forEach(dropdown => {
+                            dropdown.classList.remove('show');
+                            const button = dropdown.previousElementSibling;
+                            const arrow = button.querySelector('.dropdown-arrow');
+                            arrow.style.transform = 'rotate(0deg)';
+                        });
+                    });
+                }
+            });
+
+            // Close mobile menu when clicking dropdown items
+            mobileMenu?.querySelectorAll('.dropdown-item').forEach(item => {
+                item.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
+                    // Close all dropdowns
+                    document.querySelectorAll('.mobile-dropdown.show').forEach(dropdown => {
+                        dropdown.classList.remove('show');
+                        const button = dropdown.previousElementSibling;
+                        const arrow = button.querySelector('.dropdown-arrow');
+                        arrow.style.transform = 'rotate(0deg)';
+                    });
                 });
             });
         }
+
+        // Mobile dropdown toggle functionality - Optimized for smooth animations
+        function toggleMobileDropdown(dropdownId) {
+            const dropdown = document.getElementById(dropdownId);
+            const button = dropdown.previousElementSibling;
+            const arrow = button.querySelector('.dropdown-arrow');
+            
+            // Use requestAnimationFrame for smoother animations
+            requestAnimationFrame(() => {
+                if (dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                    if (arrow) {
+                        arrow.style.transform = 'rotate(0deg)';
+                    }
+                } else {
+                    // Close other dropdowns with smooth transitions
+                    document.querySelectorAll('.mobile-dropdown.show').forEach(openDropdown => {
+                        if (openDropdown.id !== dropdownId) {
+                            openDropdown.classList.remove('show');
+                            const otherButton = openDropdown.previousElementSibling;
+                            const otherArrow = otherButton ? otherButton.querySelector('.dropdown-arrow') : null;
+                            if (otherArrow) {
+                                otherArrow.style.transform = 'rotate(0deg)';
+                            }
+                        }
+                    });
+                    
+                    dropdown.classList.add('show');
+                    if (arrow) {
+                        arrow.style.transform = 'rotate(180deg)';
+                    }
+                }
+            });
+        }
+
+        // Make toggleMobileDropdown globally accessible
+        window.toggleMobileDropdown = toggleMobileDropdown;
 
         // Smooth scrolling for navigation links
         function initializeSmoothScrolling() {

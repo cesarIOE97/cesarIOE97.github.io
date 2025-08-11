@@ -156,7 +156,7 @@ window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
 
 // Research Journey Section Population
 function populateResearchJourney() {
-  fetch('data/portfolio.json')
+  fetch('data/portfolio_real.json')
     .then(response => response.json())
     .then(data => {
       // Populate research metrics
@@ -233,9 +233,9 @@ function populateResearchTools(data) {
   
   const tools = [
     { name: 'Machine Learning', icon: '🤖', description: 'TensorFlow, PyTorch, Scikit-learn' },
-    { name: 'Cloud Computing', icon: '☁️', description: 'AWS, Azure, Google Cloud Platform' },
-    { name: 'Data Analysis', icon: '📊', description: 'Python, R, Jupyter, Pandas' },
-    { name: 'Sustainability', icon: '🌱', description: 'CodeCarbon, Green Algorithms, LCA tools' }
+    { name: 'Cloud Computing', icon: '☁️', description: 'Google Cloud Platform' },
+    { name: 'Data Analysis', icon: '📊', description: 'Python, Jupyter, Pandas' },
+    { name: 'Sustainability', icon: '🌱', description: 'CodeCarbon, RAPL tools' }
   ];
   
   researchTools.innerHTML = tools.map(tool => `
