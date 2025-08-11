@@ -338,62 +338,14 @@
         
         /* Mobile dropdown adjustments - Optimized for smooth performance */
         @media (max-width: 768px) {
-            .mobile-dropdown {
-                display: block;
-                padding-left: 1rem;
-                margin-top: 0.5rem;
-                border-left: 2px solid rgba(34, 211, 238, 0.3);
-                max-height: 0;
-                opacity: 0;
-                overflow: hidden;
-                /* Optimized transitions for mobile performance */
-                transition: max-height 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                           opacity 0.1s ease-out;
-                /* Use transform for better performance */
-                transform: translateY(-5px);
-                will-change: transform, opacity, max-height;
-                /* Hardware acceleration for smoother animations */
-                backface-visibility: hidden;
-                perspective: 1000px;
+            /* Mobile navigation styling */
+            #mobile-menu .nav-link {
+                transition: all 0.2s ease;
             }
             
-            .mobile-dropdown.show {
-                max-height: 300px;
-                opacity: 1;
-                padding-bottom: 0.5rem;
-                transform: translateY(0);
-                transition: max-height 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                           opacity 0.15s ease-out,
-                           transform 0.15s ease-out;
-            }
-            
-            .mobile-dropdown .dropdown-item {
-                padding: 0.5rem 0.75rem;
-                margin: 0.125rem 0;
-                border-radius: 0.25rem;
-                font-size: 0.9rem;
-                /* Smooth item transitions */
-                transition: all 0.1s ease-out;
-                transform: translateZ(0); /* Force hardware acceleration */
-            }
-            
-            .mobile-dropdown .dropdown-item:hover,
-            .mobile-dropdown .dropdown-item:active {
-                background: rgba(34, 211, 238, 0.1);
+            #mobile-menu .nav-link:hover {
                 color: rgb(34, 211, 238);
-                transform: translateX(2px) translateZ(0);
-            }
-            
-            /* Improve touch responsiveness */
-            .mobile-dropdown .dropdown-item:active {
-                transform: translateX(2px) translateZ(0) scale(0.98);
-            }
-            
-            /* Arrow rotation optimization */
-            .dropdown-arrow {
-                transition: transform 0.12s ease-out;
-                transform-origin: center;
-                will-change: transform;
+                transform: translateX(2px);
             }
         }
     </style>
@@ -466,29 +418,21 @@
             <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 glass rounded-lg p-4">
                 <a href="#about" class="block py-2 nav-link">About</a>
                 
-                <!-- Research Mobile Dropdown -->
-                <div>
-                    <button onclick="toggleMobileDropdown('research-mobile')" class="flex items-center justify-between w-full py-2 nav-link text-left">
-                        Research <span class="dropdown-arrow">↓</span>
-                    </button>
-                    <div id="research-mobile" class="mobile-dropdown">
-                        <a href="#research" class="block py-1 dropdown-item">Research Areas</a>
-                        <a href="#projects" class="block py-1 dropdown-item">Projects</a>
-                        <a href="#publications" class="block py-1 dropdown-item">Publications</a>
-                        <a href="#talks" class="block py-1 dropdown-item">Talks</a>
-                        <a href="#impact" class="block py-1 dropdown-item">Research Journey</a>
-                    </div>
+                <!-- Research Links -->
+                <div class="space-y-1">
+                    <div class="text-sm font-medium text-cyan-400 py-2 px-2">Research</div>
+                    <a href="#research" class="block py-2 pl-4 nav-link text-sm">Research Areas</a>
+                    <a href="#projects" class="block py-2 pl-4 nav-link text-sm">Projects</a>
+                    <a href="#publications" class="block py-2 pl-4 nav-link text-sm">Publications</a>
+                    <a href="#talks" class="block py-2 pl-4 nav-link text-sm">Talks</a>
+                    <a href="#impact" class="block py-2 pl-4 nav-link text-sm">Research Journey</a>
                 </div>
                 
-                <!-- Experience Mobile Dropdown -->
-                <div>
-                    <button onclick="toggleMobileDropdown('experience-mobile')" class="flex items-center justify-between w-full py-2 nav-link text-left">
-                        Experience <span class="dropdown-arrow">↓</span>
-                    </button>
-                    <div id="experience-mobile" class="mobile-dropdown">
-                        <a href="#experience" class="block py-1 dropdown-item">Professional</a>
-                        <a href="#activities" class="block py-1 dropdown-item">Activities & Media</a>
-                    </div>
+                <!-- Experience Links -->
+                <div class="space-y-1">
+                    <div class="text-sm font-medium text-cyan-400 py-2 px-2">Experience</div>
+                    <a href="#experience" class="block py-2 pl-4 nav-link text-sm">Professional</a>
+                    <a href="#activities" class="block py-2 pl-4 nav-link text-sm">Activities & Media</a>
                 </div>
                 
                 <a href="#contact" class="block py-2 nav-link">Contact</a>
@@ -1547,7 +1491,7 @@
                 talksList.innerHTML = `
                     <div class="col-span-full text-center py-12">
                         <div class="text-slate-400 dark:text-slate-500 text-lg">Talks coming soon...</div>
-                        <p class="text-slate-500 dark:text-slate-400 mt-2">Preparing presentations on sustainable AI!</p>
+                        <p class="text-slate-500 dark:text-slate-400 mt-2">Preparing presentations on sustainable AI and cloud computing!</p>
                     </div>
                 `;
                 return;
@@ -1635,7 +1579,7 @@
                         <div class="text-2xl font-bold text-${metric.color}-600 dark:text-${metric.color}-400 mb-1">${metric.value}</div>
                         <div class="text-sm text-slate-600 dark:text-slate-300">${metric.label}</div>
                     </div>
-                `).join('');
+                `).join('   ');
             }
 
             if (energyEquivalents) {
@@ -2246,74 +2190,13 @@
                 mobileMenu.classList.toggle('hidden');
             });
 
-            // Close mobile menu when clicking on a direct link (not dropdown buttons)
+            // Close mobile menu when clicking on navigation links
             mobileMenu?.querySelectorAll('a').forEach(link => {
-                // Only close menu for direct navigation links, not dropdown items
-                if (!link.classList.contains('dropdown-item')) {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                        // Also close any open dropdowns
-                        document.querySelectorAll('.mobile-dropdown.show').forEach(dropdown => {
-                            dropdown.classList.remove('show');
-                            const button = dropdown.previousElementSibling;
-                            const arrow = button.querySelector('.dropdown-arrow');
-                            arrow.style.transform = 'rotate(0deg)';
-                        });
-                    });
-                }
-            });
-
-            // Close mobile menu when clicking dropdown items
-            mobileMenu?.querySelectorAll('.dropdown-item').forEach(item => {
-                item.addEventListener('click', () => {
+                link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
-                    // Close all dropdowns
-                    document.querySelectorAll('.mobile-dropdown.show').forEach(dropdown => {
-                        dropdown.classList.remove('show');
-                        const button = dropdown.previousElementSibling;
-                        const arrow = button.querySelector('.dropdown-arrow');
-                        arrow.style.transform = 'rotate(0deg)';
-                    });
                 });
             });
         }
-
-        // Mobile dropdown toggle functionality - Optimized for smooth animations
-        function toggleMobileDropdown(dropdownId) {
-            const dropdown = document.getElementById(dropdownId);
-            const button = dropdown.previousElementSibling;
-            const arrow = button.querySelector('.dropdown-arrow');
-            
-            // Use requestAnimationFrame for smoother animations
-            requestAnimationFrame(() => {
-                if (dropdown.classList.contains('show')) {
-                    dropdown.classList.remove('show');
-                    if (arrow) {
-                        arrow.style.transform = 'rotate(0deg)';
-                    }
-                } else {
-                    // Close other dropdowns with smooth transitions
-                    document.querySelectorAll('.mobile-dropdown.show').forEach(openDropdown => {
-                        if (openDropdown.id !== dropdownId) {
-                            openDropdown.classList.remove('show');
-                            const otherButton = openDropdown.previousElementSibling;
-                            const otherArrow = otherButton ? otherButton.querySelector('.dropdown-arrow') : null;
-                            if (otherArrow) {
-                                otherArrow.style.transform = 'rotate(0deg)';
-                            }
-                        }
-                    });
-                    
-                    dropdown.classList.add('show');
-                    if (arrow) {
-                        arrow.style.transform = 'rotate(180deg)';
-                    }
-                }
-            });
-        }
-
-        // Make toggleMobileDropdown globally accessible
-        window.toggleMobileDropdown = toggleMobileDropdown;
 
         // Smooth scrolling for navigation links
         function initializeSmoothScrolling() {
