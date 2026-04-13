@@ -3,7 +3,7 @@
         "name": "César Iván Olvera Espinosa",
         "title": "Doctoral Researcher @ Aalto University",
         "email": "cesar.olveraespinosa@aalto.fi",
-        "bio": "Doctoral researcher in Cloud & Network Computing at Aalto University, Finland. Working on sustainable AI, carbon-aware computing, and energy-efficient software.",
+        "bio": "Doctoral researcher in Cloud & Network Computing at Aalto University, Finland. Working on sustainable computing in software systems and AI services.",
         "longBio": "Doctor of Science (Tech.) candidate at Aalto University (School of Electrical Engineering), researching carbon-aware workload placement, energy-efficient AI inference, and green software engineering. Background in communications engineering, and hands-on experience with networked systems, benchmarking, and sustainability-focused projects.",
         "affiliations": [
             "Aalto University",
@@ -172,7 +172,7 @@
             "courses": [
                 {
                     "title": "ELEC-E7315 Networking at Scale and Advanced Applications",
-                    "period": "Spring 2025",
+                    "period": "Spring 2025, Spring 2026",
                     "role": "Teaching Assistant"
                 },
                 {
@@ -312,6 +312,32 @@
     ],
     "activities": [
         {
+            "title": "Design Sprint 2026",
+            "organization": "Dash",
+            "location": "Helsinki, Finland",
+            "date": "2026",
+            "role": "Participant",
+            "description": "PParticipated in Sprint 2026, working on the Logitech challenge focused on human–AI agent–human interaction, designing and prototyping user-centered solutions through rapid ideation, collaboration, and iterative feedback.",
+            "tags": [
+                "design-sprint",
+                "human-ai-interaction",
+                "collaboration"
+            ]
+        }
+        {
+            "title": "Unite! Research School",
+            "organization": "Unite! European University Alliance",
+            "location": "Grenoble, France",
+            "date": "2025",
+            "role": "Participant",
+            "description": "Attended Unite! Research School 2025 (AI & Cybersecurity track), with lectures, collaborative activities, a case study challenge and an industrial visit to the Orange Green datacenter.",
+            "tags": [
+                "summer-school",
+                "poster",
+                "conference"
+            ]
+        },
+        {
             "title": "ACACES 2025 Summer School",
             "organization": "HiPEAC",
             "location": "Fiuggi, Italy",
@@ -422,6 +448,19 @@
     "publications": [],
     "talks": [],
     "news": [
+        {
+            "title": "Participation - Unite! Research School 2026",
+            "date": "11/03/2025",
+            "description": "Attended Unite! Research School 2025 (AI & Cybersecurity track), with lectures, collaborative activities, a case study challenge and an industrial visit to the Orange Green datacenter.",
+            "type": [
+                "Research School"
+            ],
+            "tags": [
+                "research",
+                "winter",
+                "ai"
+            ]
+        },
         {
             "title": "Poster Presentation - ACACES 2025 Summer School",
             "date": "6/18/2025",
